@@ -1,0 +1,11 @@
+.rodape{
+    width: inherit;
+    border-top: 1px solid #A7F3D0;
+}
+.rodape__text{
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+    color: #047857;
+    padding: 0.9rem;
+}

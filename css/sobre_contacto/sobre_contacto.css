@@ -1,0 +1,21 @@
+.main{
+    display: flex;
+    width: inherit;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+}
+.main__card{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 1px 1px 1px 1px rgb(192, 191, 191);
+    width: 90%;
+    margin: auto;
+    padding: 1.5rem;
+    border-radius: 5px;
+    line-height: 2rem;
+}
+.main__card--text{
+    color: #047857;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/login/header.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login/loginForm.css">
+    <link rel="stylesheet" href="./css/login/footer.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <div class="logo__letra">
+                B
+            </div>
+            <div class="logo__text">
+                <strong>Biblioteca Williette</strong>
+                <p>Acesso livre ao acervo digital</p>
+            </div>
+        </div>
+        <div class="search">
+            <input class="search__inp" type="text"  placeholder="Pesquisar por titulo, autor ou ISBN...">
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="./sobre.html">Sobre</a></li>
+                <li><a href="./contactos.html">Contactos</a></li>
+                <li class="links__btn--entrar"><a href="./loginTela.html">Entrar</a></li>
+            </ul>
+
+        </div>
+    </header>
+    <section class="login">
+        <div class="login__card">
+            <h3 class="login__titulo">Login Administrador</h3>
+            <label for="login_inp_email"></label>
+            <input class="login__input--text" id="login_inp_email" type="email" placeholder="Email">
+            <label for="login_inp_senha"></label>
+            <input class="login__input--text" id="login_inp_senha" type="password" placeholder="Senha">
+            <div class="login__card--btns">
+                <input id="login__card--btn-Entrar" class="login__card--btn" type="submit" value="Entar">
+                <a id="login__card--btn-Voltar" class="login__card--btn" href="./home.html">Voltar</a>
+            </div>
+        </div>
+    </section>
+    <footer class="rodape">
+        <div class="rodape__text">
+            <p>&copy 2025 Biblioteca Williette</p>
+            <p>bibliotea@williettte.org   +244 900 000 000</p>
+        </div>
+    </footer>
+</body>
+</html>

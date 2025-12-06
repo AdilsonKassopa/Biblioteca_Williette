@@ -1,0 +1,43 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background:#ECFDF5;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Tira estilos padrões de botões, inputs etc */
+button, input, textarea {
+  border: none;
+  outline: none;
+  font: inherit;
+}
+
+/* Remove decoração padrão dos links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove bullets das listas */
+ul, ol {
+  list-style: none;
+}
+
+/* Suaviza fontes */
+html {
+  scroll-behavior: smooth;
+}
+
+/* TUAS VARIÁVEIS */
+:root {
+  --cor-principal: #2ecc71;
+  --cor-secundaria: #27ae60;
+  --fonte: "Poppins", sans-serif;
+}
