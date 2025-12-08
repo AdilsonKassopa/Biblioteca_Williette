@@ -1,0 +1,35 @@
+.dashboard{
+    display: none;
+    flex-direction: column;
+    width: 84%;
+    height: 12rem;
+    padding: 1.3rem;
+    background: #fff;
+    box-shadow: 1px 1px 1px 1px  rgb(192, 191, 191);
+    border-radius: 7px;
+    margin-left: 2rem;
+
+}
+.dashboard__cards{
+    display: flex;
+    gap: 2.5rem;
+    height: inherit;
+    margin-top: 0.9rem;
+}
+.dashboard__card{
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    background: #D1FAE5;
+    padding: 1rem;
+    border-radius: 7px;
+    height: 70%;
+    justify-content: center;
+    align-items: flex-start;
+    color: #047857;
+}
+
+.font__count{
+    font-weight: bold;
+    font-size: 2rem;
+}
