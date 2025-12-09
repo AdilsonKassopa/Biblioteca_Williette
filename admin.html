@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/admin/painel.css">
     <link rel="stylesheet" href="./css/admin/dashboard.css">
     <link rel="stylesheet" href="./css/admin/gerirLivros.css">
+    <link rel="stylesheet" href="./css/admin/adicionarLivros.css">
 </head>
 <body>
      <header class="cabecalho">
@@ -34,8 +35,10 @@
 
         </div>
     </header>
+<!--Esta é secção principal onde estaram todas as outras  secções que compõem esta página -->
 
     <section class="main">
+        <!--Esta é a secção do painel onde apareceram as opções para o admin-->
         <section class="painel">
             <h3 class="painel__titulo">Painel admin</h3>
             <ul class="painel__menu">
@@ -49,6 +52,9 @@
                 <a href="./home.html">Sair</a>
             </div>
         </section>
+        <!--Termina aqui a secção do painel-->
+
+        <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
         <section class="dashboard">
             <h3 class="dashboard__titulo">Dashboard</h3>
             <div class="dashboard__cards">
@@ -68,7 +74,9 @@
                 </div>
             </div>
         </section>
+        <!--A secção do dashboard termina aqui-->
 
+        <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
         <section class="gerirLivros">
             <div class="gerirLivros__header">
                 <strong>Livros</strong>
@@ -108,7 +116,45 @@
                 </tbody>
             </table>
         </section>
+        <!--A secção gerir livro termina aqui-->
+
+        <!--Nesta secção teremos o formulario para cadastrar os livros-->
+        <section class="adicionarLivro">
+            <div class="adicionar__form">
+                <h3 class="adicionar__form--titulo">Adicionar Livro</h3>
+
+                <input class="adicionar__form--input" type="text" placeholder="Título">
+
+                <input class="adicionar__form--input" type="text" placeholder="Autor">
+
+                <select class="adicionar__form--input"   >
+                    <option value="">Selecione a categoria</option>
+                        <option value="Ficção">Ficção</option>
+                        <option value="Não-Ficção">Não-Ficção</option>
+                        <option value="Ciência">Ciência</option>
+                        <option value="História">História</option>
+                        <option value="Biografias">Biografias</option>
+                        <option value="Infantil">Infantil</option>
+                        <option value="Tecnologia">Tecnologia</option>
+                </select>
+
+                <input class="adicionar__form--input" type="number"  value="2025">
+
+                <input class="adicionar__form--input" type="file" placeholder="URL da Capa"        accept="image/*" required>
+
+                <input class="adicionar__form--input" type="file" placeholder="URL do pdf" accept="application/pdf" required>
+
+                <textarea class="adicionar__form--input"  placeholder="Sinopse"></textarea>
+
+                <div class="adicionar__form--btns">
+                    <input id="adicionar__form--btn_salvar" type="submit" value="Salvar">
+                    <input id="adicionar__form--btn_cancelar" type="submit" value="Cancelar">
+                </div>
+            </div>
+        </section>
+        <!--Termina aqui a secção para cadastrar o livro-->
     </section>
+<!--Termina aqui a secção principal da página-->
     <footer class="rodape">
         <div class="rodape__text">
             <p>&copy 2025 Biblioteca Williette</p>
