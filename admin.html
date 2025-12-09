@@ -42,11 +42,11 @@
         <section class="painel">
             <h3 class="painel__titulo">Painel admin</h3>
             <ul class="painel__menu">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Gerir Livros</a></li>
-                <li><a href="#">Adicionar</a> Livro</li>
-                <li><a href="#">Categoria</a></li>
-                <li><a href="#">Configurações</a></li>
+                <li><a class="painel__menu--option" ref="#">Dashboard</a></li>
+                <li><a class="painel__menu--option" href="#">Gerir Livros</a></li>
+                <li><a class="painel__menu--option" href="#">Adicionar</a> Livro</li>
+                <li><a class="painel__menu--option" href="#">Categoria</a></li>
+                <li><a class="painel__menu--option" href="#">Configurações</a></li>
             </ul>
             <div class="painel__rodape">
                 <a href="./home.html">Sair</a>
@@ -55,7 +55,7 @@
         <!--Termina aqui a secção do painel-->
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
-        <section class="dashboard">
+        <section  class="dashboard optionInfo">
             <h3 class="dashboard__titulo">Dashboard</h3>
             <div class="dashboard__cards">
                 <div class="dashboard__card">
@@ -77,7 +77,7 @@
         <!--A secção do dashboard termina aqui-->
 
         <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
-        <section class="gerirLivros">
+        <section class="gerirLivros optionInfo">
             <div class="gerirLivros__header">
                 <strong>Livros</strong>
                 <a href="#">Adicionar</a>
@@ -119,7 +119,7 @@
         <!--A secção gerir livro termina aqui-->
 
         <!--Nesta secção teremos o formulario para cadastrar os livros-->
-        <section class="adicionarLivro">
+        <section class="adicionarLivro optionInfo">
             <div class="adicionar__form">
                 <h3 class="adicionar__form--titulo">Adicionar Livro</h3>
 
@@ -161,5 +161,6 @@
             <p>bibliotea@williettte.org   +244 900 000 000</p>
         </div>
     </footer>
+    <script src="./scripts/admin/index.js"></script>
 </body>
 </html>

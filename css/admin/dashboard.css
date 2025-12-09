@@ -1,5 +1,5 @@
 .dashboard{
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 84%;
     height: 12rem;
