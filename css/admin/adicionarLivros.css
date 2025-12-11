@@ -34,7 +34,6 @@
 }
 
 .adicionar__form--btns input{
-    border: 1px solid #A7F3D0; 
     border-radius: 5px;
     padding: 0.4rem;
     cursor: pointer;
@@ -42,6 +41,16 @@
 #adicionar__form--btn_salvar{
     background: #047857;
 }
+
+#adicionar__form--btn_salvar:hover{
+    background: var(--green-hover);
+}
+
 #adicionar__form--btn_cancelar{
+    border: 1px solid #A7F3D0; 
     background: transparent;
+}
+
+#adicionar__form--btn_cancelar:hover{
+    background: var(--green-border);
 }

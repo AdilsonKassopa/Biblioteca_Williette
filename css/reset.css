@@ -37,7 +37,9 @@ html {
 
 /* TUAS VARIÁVEIS */
 :root {
-  --cor-principal: #2ecc71;
-  --cor-secundaria: #27ae60;
+  --cor-principal: #047857;;
+  --cor-secundaria: #ECFDF5;
   --fonte: "Poppins", sans-serif;
+  --green-hover: #09946d;
+  --green-border:#A7F3D0;
 }
