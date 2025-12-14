@@ -8,8 +8,8 @@
 .main__card{
     display: flex;
     flex-direction: column;
-    background: #fff;
-    box-shadow: 1px 1px 1px 1px rgb(192, 191, 191);
+    background:var(--white);
+    box-shadow: 1px 1px 1px 1px var(--grey-sombras);
     width: 90%;
     margin: auto;
     padding: 1.5rem;
@@ -17,5 +17,5 @@
     line-height: 2rem;
 }
 .main__card--text{
-    color: #047857;
+    color: var(--cor-principal);
 }

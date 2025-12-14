@@ -9,21 +9,21 @@
     display: flex;
     width: 15%;
     height: 20rem;
-    background: #fff;
+    background: var(--white);
     border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px rgb(192, 191, 191);
+    box-shadow: 1px 1px 1px 1px var(--grey-sombras);
     padding: 0.9rem;
 }
 .main__categoria--card{
     display: flex;
     flex-direction: column;
-    color: #047857;
+    color: var(--cor-principal);
     line-height: 1.8rem;
     overflow-y: scroll;
     width: 100%;
 }
 .main__categoria--card ul li:hover{
-    background: #D1FAE5;
+    background: var(--esmerald-fundos);
     font-size: 1.2rem;
     border-radius: 4px;
     padding: 0.5rem;
@@ -37,7 +37,7 @@
     flex-direction: column;
 }
 .main_destaque--titulo{
-    color: #047857;
+    color: var(--cor-principal);
 }
 .main__destaque--cards{
     display: flex;
@@ -52,16 +52,17 @@
 .main__destaque--card{
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background:var(--white);
     border-radius: 9px;
-    box-shadow: 1px 1px 1px 1px rgb(192, 191, 191);
+    box-shadow: 1px 1px 1px 1px var(--grey-sombras);
     padding: 0.9rem;
     width: 20%;
     height: 23rem;
 }
 .main__destaque--card:hover{
-    transform: translate(0, 1rem);
-    transition: .15s;
+    transform: translate(-.9rem, -.9rem);
+    transition: .20s;
+    box-shadow: 0 4px 4px 4px var(--grey-sombras);
 }
 .main__destaque--card_capa{
     width: 100%;
@@ -75,7 +76,7 @@
 .main__destaque--card_detalhes{
     display: flex;
     flex-direction: column;
-    color: #047857;
+    color: var(--cor-principal);
     line-height: 2rem;
 }
 .card__detalhes--rodape{
@@ -91,7 +92,7 @@
     padding: 0.3rem;
     border-radius: 6px;
     width: 2.5rem;
-   color: #fff;
+   color: var(--white);
    cursor: pointer;
 }
 .card__detalhes--rodape_btn:hover{

@@ -10,13 +10,13 @@
     flex-direction: column;
     width: 15%;
     height: 16rem;
-    box-shadow: 1px 1px 1px 1px  rgb(192, 191, 191);
+    box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
     padding: 0.9rem;
-    background: #fff;
+    background: var(--white);
     border-radius: 5px;
 }
 .painel__titulo{
-    color: #047857;
+    color: var(--cor-principal);
     margin-bottom: 1rem;
 }
 .painel__menu{
@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 .painel__menu li:hover{
-    background: #D1FAE5;
+    background: var(--esmerald-fundos);
     font-size: 1.2rem;
     border-radius: 4px;
     padding: 0.5rem;

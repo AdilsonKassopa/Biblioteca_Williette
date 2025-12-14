@@ -41,5 +41,12 @@ html {
   --cor-secundaria: #ECFDF5;
   --fonte: "Poppins", sans-serif;
   --green-hover: #09946d;
+  --esmerald-900:#064e3b;
   --green-border:#A7F3D0;
+  --esmerald-fundos:#D1FAE5;
+  --esmerald-bordas:#D1FAE5;
+  --grey-sombras: rgb(192, 191, 191);
+  --white:#fff;
+  --red-hover:rgba(247, 48, 48, 0.842);
+  --red-fundo:rgb(255,0,0);
 }

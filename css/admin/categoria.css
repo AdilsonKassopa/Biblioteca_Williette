@@ -1,0 +1,55 @@
+.categoria{
+    display: none;
+    flex-direction: column;
+    width: 84%;
+    padding: 1.3rem;
+    background: var(--white);
+    box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
+    border-radius: 7px;
+    margin-left: 2rem;
+}
+.categoria__adicionar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+}
+.categoria__adicionar input[type = text]{
+    border: 1px solid var(--green-border);
+    border-radius: 4px;
+    width: 90%;
+    padding: 0.9rem;
+}
+
+.categoria__adicionar input[type = submit]{
+    border-radius: 4px;
+    background: var(--cor-principal);
+    padding: 0.6rem;
+    color: var(--white);
+    cursor: pointer;
+
+}
+.categoria__adicionar input[type = submit]:hover{
+    background: var(--green-hover);
+}
+.categoria__list ul li{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--green-border);
+    padding: 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+.categoria__list ul li input{
+    background: transparent;
+    color: red;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+.categoria__list ul li input:hover{
+    background: var(--red-fundo);
+    color: var(--white);
+    padding: 0.3rem;
+    border-radius: 4px;
+}

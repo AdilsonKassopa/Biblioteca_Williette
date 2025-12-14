@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/admin/dashboard.css">
     <link rel="stylesheet" href="./css/admin/gerirLivros.css">
     <link rel="stylesheet" href="./css/admin/adicionarLivros.css">
+    <link rel="stylesheet" href="./css/admin/categoria.css">
 </head>
 <body>
      <header class="cabecalho">
@@ -118,7 +119,7 @@
         </section>
         <!--A secção gerir livro termina aqui-->
 
-        <!--Nesta secção teremos o formulario para cadastrar os livros-->
+        <!--Nesta secção teremos o formulario para Adicionar os livros-->
         <section class="adicionarLivro optionInfo">
             <div class="adicionar__form">
                 <h3 class="adicionar__form--titulo">Adicionar Livro</h3>
@@ -152,9 +153,35 @@
                 </div>
             </div>
         </section>
-        <!--Termina aqui a secção para cadastrar o livro-->
+        <!--Termina aqui a secção para Adicionar o livro-->
+
+        <!--Nesta secção teremos o formulario para adicionar a categoria -->
+        <section class="categoria optionInfo">
+            <h3>Categorias</h3>
+            <div class="categoria__adicionar">
+                <input type="text"  placeholder="Nova Categoria">
+                <input type="submit" value="Adicionar">
+            </div>
+            <div class="categoria__list">
+                <ul>
+                    <li>
+                        <span>Todos</span>
+                        <input type="submit" value="Remover">
+                    </li>
+                    <li>
+                        <span>Ficção</span>
+                        <input type="submit" value="Remover">
+                    </li>
+                    <li>
+                        <span>Não-Ficção</span>
+                        <input type="submit" value="Remover">
+                    </li>
+                </ul>
+            </div>
+        </section>
     </section>
 <!--Termina aqui a secção principal da página-->
+
     <footer class="rodape">
         <div class="rodape__text">
             <p>&copy 2025 Biblioteca Williette</p>

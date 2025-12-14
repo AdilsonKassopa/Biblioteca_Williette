@@ -4,8 +4,8 @@
     width: 84%;
     height: 12rem;
     padding: 1.3rem;
-    background: #fff;
-    box-shadow: 1px 1px 1px 1px  rgb(192, 191, 191);
+    background: var(--white);
+    box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
     border-radius: 7px;
     margin-left: 2rem;
 
@@ -20,13 +20,13 @@
     display: flex;
     flex-direction: column;
     width: 28%;
-    background: #D1FAE5;
+    background: var(--esmerald-fundos);
     padding: 1rem;
     border-radius: 7px;
     height: 70%;
     justify-content: center;
     align-items: flex-start;
-    color: #047857;
+    color:var(--cor-principal);
 }
 
 .font__count{
