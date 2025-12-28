@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/admin/gerirLivros.css">
     <link rel="stylesheet" href="./css/admin/adicionarLivros.css">
     <link rel="stylesheet" href="./css/admin/categoria.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
 </head>
 <body>
      <header class="cabecalho">
@@ -43,14 +44,15 @@
         <section class="painel">
             <h3 class="painel__titulo">Painel admin</h3>
             <ul class="painel__menu">
-                <li><a class="painel__menu--option" ref="#">Dashboard</a></li>
-                <li><a class="painel__menu--option" href="#">Gerir Livros</a></li>
-                <li><a class="painel__menu--option" href="#">Adicionar Livro</a></li>
-                <li><a class="painel__menu--option" href="#">Categoria</a></li>
-                <li><a class="painel__menu--option" href="#">Configurações</a></li>
+                <li><i class="fa-solid fa-gauge"> </i> <a class="painel__menu--option" ref="#">Dashboard</a></li>
+                <li><i class="fa-solid fa-book-open"> </i> <a class="painel__menu--option" href="#">Gerir Livros</a></li>
+                <li><i class="fa-solid fa-plus"> </i> <a class="painel__menu--option" href="#">Adicionar Livro</a></li>
+                <li><i class="fa-solid fa-tags"> </i> <a class="painel__menu--option" href="#">Categoria</a></li>
+                <li><i class="fa-solid fa-cog"> </i> <a class="painel__menu--option" href="#">Configurações  <i class="fa fa-angle-down"></i></a></li>
             </ul>
             <div class="painel__rodape">
-                <a href="./home.html">Sair</a>
+                <i class="fa fa-sign-out-alt"></i>
+                <a href="./home.html"> Sair</a>
             </div>
         </section>
         <!--Termina aqui a secção do painel-->

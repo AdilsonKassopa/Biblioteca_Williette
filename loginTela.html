@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login/loginForm.css">
     <link rel="stylesheet" href="./css/login/footer.css">
+    <link rel="stylesheet" href="./css/fontawesome/css/all.min.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -34,14 +35,67 @@
     </header>
     <section class="login">
         <div class="login__card">
-            <h3 class="login__titulo">Login Administrador</h3>
-            <label for="login_inp_email"></label>
-            <input class="login__input--text" id="login_inp_email" type="email" placeholder="Email">
-            <label for="login_inp_senha"></label>
-            <input class="login__input--text" id="login_inp_senha" type="password" placeholder="Senha">
-            <div class="login__card--btns">
-                <input id="login__card--btn-Entrar" class="login__card--btn" type="submit" value="Entar">
-                <a id="login__card--btn-Voltar" class="login__card--btn" href="./home.html">Voltar</a>
+            <div class="login__card--header">
+                <div class="login__card--header_svg">
+                    <svg class="w-8 h-8 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <h2 class="login__card--header_titulo">Área do Administrador</h2>
+                <p>Acesso restrito para gerenciamento de conteúdo</p>
+            </div>
+            <div class="login__card--body">
+                <label for="login_inp_email">Email <sup style="color: red;">*</sup></label>
+                <div class="inputs">
+                    <div class="inputs__icon">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <input class="login__input--text"
+                        id="login_inp_email"
+                        type="email" 
+                        placeholder="Email" 
+                        required aria-required="true"
+                    >
+                </div>
+                <label id="inp_email--error" for="login_inp_email"></label>
+
+                <label for="login_inp_senha">Senha <sup style="color: red;">*</sup></label>
+                <div class="inputs">
+                    <div class="inputs__icon">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <input class="login__input--text" 
+                        id="login_inp_senha" 
+                        type="password" 
+                        placeholder="Senha" 
+                        required aria-required="true"
+                    >
+                </div>
+                <label id="inp_senha--error" for="login_inp_senha"></label>
+
+                <div class="login__card--btns">
+                    <input id="login__card--btn-Entrar" 
+                    class="login__card--btn" 
+                    type="submit" value="Entar">
+                    <a id="login__card--btn-Voltar" class="login__card--btn" href="./home.html">Voltar</a>
+                </div>
+                <div class="login__card--tex_aviso">
+                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        <p>Aviso de Segurança</p>
+                        <p>
+                            Esta área é restrita a administradores autorizados. 
+                            Todas as ações são registradas e monitoradas. Após 15 minutos de inatividade, 
+                            sua sessão será encerrada automaticamente.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -4,45 +4,126 @@
      justify-content: center;
     justify-items: center;
     width: inherit;
-    height: 20rem;
+    padding: 2rem;
 }
 .login__card{
     display: flex;
     flex-direction: column;
-    padding: 0.9rem;
     background: var(--white);
-    border-radius: 7px;
+    border-radius: 12px;
     width: 35%;
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
+    overflow: hidden;
 }
 
-.login__input--text{
-    border: 1px solid var(--green-border);
-    padding: 0.5rem;
+.login__card--header{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+    background: rgb(45 90 61 / var(--tw-bg-opacity, 1));
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    line-height: 2.2rem;
+    object-fit: cover;
+}
+.login__card--header_svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color:rgb(255 255 255 /0.1) ;
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+}
+.login__card--header_svg svg{
+    width: 2rem;
+    height: 2rem;
+    color:var(--white);
+    
+}
+.login__card--header p{
+    color: var(--white);
+}
+
+.login__card--body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+.inputs{
+    display: flex;
     border-radius: 4px;
-    margin-bottom: 0.9rem;
+    border: 1px solid var(--green-border);
+    padding: 0.7rem;
+    cursor:text;
+    margin-bottom: 1.4rem;
+    margin-top: .7rem;
+}
+.inputs__icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputs__icon svg{
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.login__input--text{
+    margin-left: .5rem;
+    width: 100%;
 }
 .login__card--btns{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .login__card--btn{
     border-radius: 3px;
     padding: 0.8rem;
     cursor: pointer;
+    margin-bottom: 0.7rem;
 }
 #login__card--btn-Entrar{
     background: var(--cor-principal);
     color: var(--white);
+    
 }
 #login__card--btn-Entrar:hover{
     background: var(--green-hover);
 }
 #login__card--btn-Voltar{
+    display: flex;
     border: 1px solid var(--green-border);
     background: transparent;
+    justify-content: center;
+    text-align: center;
+
 }
 #login__card--btn-Voltar:hover{
     background: var(--green-border);
+}
+.login__card--tex_aviso{
+    display:flex;
+    padding: 0.5rem;
+    background-color: rgb(45 90 61 / 0.05);
+    border-radius: 5px;
+    gap: 0.7rem;
+    justify-content: flex-start;
+    
+}
+.login__card--tex_aviso svg{
+    color: rgb(45 90 61 / var(--tw-bg-opacity, 1));
+    width: 1.30rem;
+    height: 1.30rem;
+    flex-shrink: 0;
+    margin-top:0.130rem;
+    
+}
+.login__card--tex_aviso div p{
+    line-height: 1.5rem;
 }
