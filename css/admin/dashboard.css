@@ -2,13 +2,27 @@
     display: flex;
     flex-direction: column;
     width: 84%;
-    height: 12rem;
     padding: 1.3rem;
-    background: var(--white);
+    /*background: var(--white);
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
-    border-radius: 7px;
+    border-radius: 7px;*/
     margin-left: 2rem;
 
+}
+.dashboard__header{
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard__header--text{
+    line-height: 1.8rem;
+}
+.dashboard__header--date{
+    display: flex;
+    gap:.4rem;
+}
+.dashboard__header--date svg{
+    width:1.25rem;
+    height: 1.25rem;
 }
 .dashboard__cards{
     display: flex;
@@ -23,13 +37,40 @@
     background: var(--esmerald-fundos);
     padding: 1rem;
     border-radius: 7px;
-    height: 70%;
     justify-content: center;
     align-items: flex-start;
     color:var(--cor-principal);
+    padding: 1.8rem;
 }
-
+.dashboard__card--header{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: .7rem;
+}
+.card__header--icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 0.75rem;
+    background-color: rgb(45 90 61 /0.1);
+    
+}
+.card__header--icon svg{
+    width: 1.5rem;
+    height:1.5rem;
+    color:#8b4513;
+}
 .font__count{
     font-weight: bold;
     font-size: 2rem;
+}
+.dashboard__card--footer{
+    display:flex;
+    padding:.4rem;
+    border-top: 1px solid;
+    border-color: rgb(45, 90, 61, 0.15);
+    width: 100%;
+    margin-top:.9rem;
 }

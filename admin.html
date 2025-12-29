@@ -59,21 +59,63 @@
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
         <section  class="dashboard optionInfo">
-            <h3 class="dashboard__titulo">Dashboard</h3>
+            <div class="dashboard__header">
+                <div class="dashboard__header--text">
+                    <h1 class="dashboard__titulo">Painel Administrativo</h1>
+                    <p>Bem-vindo de volta, Administrador</p>
+                </div>
+                <div class="dashboard__header--date">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p>25 de dezembro de 2025, 05:30</p>
+                </div>
+            </div>
             <div class="dashboard__cards">
                 <div class="dashboard__card">
-                    <p>Livros</p>
-                    <strong class="font__count" id="livro_count">24</strong>
+                    <div class="dashboard__card--header">
+                       <div class="card__header--icon">
+                            <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                       </div>
+                    </div>
+                    <strong class="font__count">1,247</strong>
+                    <p id="livro_count">total de livros</p>
+                    <div class="dashboard__card--footer">
+                        <p>+18 novos neste mês</p>
+                    </div>
                 </div>
 
                 <div class="dashboard__card">
-                    <p>Categorias</p>
-                    <strong class="font__count" id="categoria_count">8</strong>
+                    <div class="dashboard__card--header">
+                       <div class="card__header--icon">
+                            <svg class="" style="color: #8b4513;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                            </svg>
+                       </div>
+                    </div>
+                    <strong class="font__count">45</strong>
+                    <p id="livro_count">Categorias activas</p>
+                    <div class="dashboard__card--footer">
+                        <p>+3 adicionadas recentemente</p>
+                    </div>
                 </div>
 
                 <div class="dashboard__card">
-                    <p>Admin</p>
-                    <strong class="font__count" id="admin_count">1</strong>
+                    <div class="dashboard__card--header">
+                       <div class="card__header--icon">
+                            <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                       </div>
+                    </div>
+                    <strong class="font__count">24,567</strong>
+                    <p id="livro_count">Visualizções</p>
+                    <div class="dashboard__card--footer">
+                        <p>24,567 Hoje</p>
+                    </div>
                 </div>
             </div>
         </section>
