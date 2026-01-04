@@ -41,7 +41,7 @@
 
     <section class="main">
         <!--Esta é a secção do painel onde apareceram as opções para o admin-->
-        <section class="painel">
+        <section class="painel ">
             <h3 class="painel__titulo">Painel admin</h3>
             <ul class="painel__menu">
                 <li><i class="fa-solid fa-gauge"> </i> <a class="painel__menu--option" ref="#">Dashboard</a></li>
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="dashboard__cards">
-                <div class="dashboard__card">
+                <div class="dashboard__card elements__hover">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard__card">
+                <div class="dashboard__card elements__hover">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" style="color: #8b4513;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard__card">
+                <div class="dashboard__card elements__hover">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,6 +116,44 @@
                     <div class="dashboard__card--footer">
                         <p>24,567 Hoje</p>
                     </div>
+                </div>
+            </div>
+            <div class="accoes">
+                <h2>Ações Rápidas</h2>
+                <div class="accoes__cards">
+                    <a  class="accoes__card elements__hover" href="#">
+                        <div id="accoes__icon--livro" class="accoes__card--icon">
+                            <svg  class=" group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                        </div>
+                        <div class="accoes__card--text">
+                            <h3>Adicionar novo livro</h3>
+                            <p>Cadastrar livro no acervo</p>
+                        </div>
+                    </a>
+                    <a class="accoes__card elements__hover" href="#">
+                        <div id="accoes__icon--categoria" class="accoes__card--icon">
+                            <svg class="w-8 h-8 text-secondary group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                            </svg>
+                        </div>
+                        <div class="accoes__card--text">
+                            <h3>Criar Categoria</h3>
+                            <p>Cadastrar nova Categoria </p>
+                        </div>
+                    </a>
+                    <a class="accoes__card elements__hover" href="#">
+                        <div id="accoes__icon--configuraces" class="accoes__card--icon">
+                            <svg class="w-8 h-8 text-accent group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                            </svg>
+                        </div>
+                        <div class="accoes__card--text">
+                            <h3>Gerenciamento</h3>
+                            <p>Editar Configurações </p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

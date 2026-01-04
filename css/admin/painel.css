@@ -1,12 +1,12 @@
 .main{
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content:center;
     padding: 1.3rem;
     align-items: flex-start;
 }
 .painel{
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 15%;
     height: 16rem;
