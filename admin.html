@@ -42,17 +42,16 @@
     <section class="main">
         <!--Esta é a secção do painel onde apareceram as opções para o admin-->
         <section class="painel ">
-            <h3 class="painel__titulo">Painel admin</h3>
-            <ul class="painel__menu">
-                <li><i class="fa-solid fa-gauge"> </i> <a class="painel__menu--option" ref="#">Dashboard</a></li>
-                <li><i class="fa-solid fa-book-open"> </i> <a class="painel__menu--option" href="#">Gerir Livros</a></li>
-                <li><i class="fa-solid fa-plus"> </i> <a class="painel__menu--option" href="#">Adicionar Livro</a></li>
-                <li><i class="fa-solid fa-tags"> </i> <a class="painel__menu--option" href="#">Categoria</a></li>
-                <li><i class="fa-solid fa-cog"> </i> <a class="painel__menu--option" href="#">Configurações  <i class="fa fa-angle-down"></i></a></li>
-            </ul>
-            <div class="painel__rodape">
-                <i class="fa fa-sign-out-alt"></i>
-                <a href="./home.html"> Sair</a>
+            <h3 class="painel__titulo">Busca Rápida</h3>
+            <div class="painel__card">
+                <div id="painel__card--input" class="painel__card--input">
+                    <div class="painel__card--input_icon">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="text" placeholder="Buscar livro ou Categoria..." >
+                </div>
             </div>
         </section>
         <!--Termina aqui a secção do painel-->
@@ -118,6 +117,7 @@
                     </div>
                 </div>
             </div>
+            <!--Acçõs rapidas-->
             <div class="accoes">
                 <h2>Ações Rápidas</h2>
                 <div class="accoes__cards">
@@ -154,6 +154,52 @@
                             <p>Editar Configurações </p>
                         </div>
                     </a>
+                </div>
+            </div>
+
+            <!--Actividades Recentes-->
+            <div class="actividades">
+                <h2 class="actividade__titulo">Actividades Recentes</h2>
+                <!--actividade item 1-->
+                <div class="actividades__card">
+                    <div class="actividades__card--icon">
+                        <svg id="card__icon--novoliro" class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <div class="actividades__card--text">
+                        <p class="card__text--titulo">Novo livro adicionado</p>
+                        <p class="card__text--details">"A Metamorfose" de Franz Kafka foi adicionado à categoria Literatura Estrangeira</p>
+                        <p class="card__text--hours">Há 15 minutos</p>
+                    </div>
+                </div>
+
+                <!--actividade item 2-->
+                <div class="actividades__card">
+                    <div class="actividades__card--icon">
+                        <svg id="card__icon--novocategoria" class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                    </div>
+                    <div class="actividades__card--text">
+                        <p class="card__text--titulo">Nova categoria criada</p>
+                        <p class="card__text--details">Categoria "Ficção Científica Brasileira" foi adicionada ao sistema</p>
+                        <p class="card__text--hours">Há 3 horas</p>
+                    </div>
+                </div>
+
+                <!--actividade item 2-->
+                                <div class="actividades__card">
+                    <div class="actividades__card--icon">
+                        <svg id="card__icon--livroAtualizado" class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <div class="actividades__card--text">
+                        <p class="card__text--titulo">Livro atualizado</p>
+                        <p class="card__text--details">Informações de "Memórias Póstumas de Brás Cubas" foram atualizadas</p>
+                        <p class="card__text--hours">Há 5 horas</p>
+                    </div>
                 </div>
             </div>
         </section>

@@ -33,7 +33,7 @@
 .dashboard__card{
     display: flex;
     flex-direction: column;
-    width: 28%;
+    width: 35%;
     background: var(--esmerald-fundos);
     padding: 1rem;
     border-radius: 7px;
@@ -147,8 +147,80 @@
     color:#4a4a4a;
 }
 
+.actividades{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--esmerald-fundos);
+    width: 100%;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(45, 90, 61, 0.08);
+}
+
+.actividade__titulo{
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-family: Crimson Text, serif;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+.actividades__card{
+    display: flex;
+    width: 100%;
+    background-color: #fefcf7;
+    border-radius: 16px;
+    align-items: flex-start;
+    padding: 1rem;
+    margin-top: 1rem;
+    transition: background-color 0.7s ease;
+}
+.actividades__card:hover{
+    background-color: transparent;
+}
+
+.actividades__card--icon{
+    display: flex;
+    padding: 0.5rem;
+    background-color: rgb(34 197 94 / 0.1);
+    border-radius: 16px;
+    margin-right: 1rem;
+    justify-content: center;
+}
+.actividades__card--icon svg{
+    width: 1.25rem;
+    width: 1.25rem;
+}
+#card__icon--novoliro{
+    color: #22c55e;
+}
+#card__icon--novocategoria{
+    color:#8b4513;
+}
+#card__icon--livroAtualizado{
+    color:#f59e0b;
+}
+.actividades__card--text{
+    line-height: 1.8rem;
+}
+.card__text--titulo{
+    color: #1a1a1a;
+    font-weight: 500;
+}
+.card__text--details{
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+.card__text--hours{
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #6b6b6b;
+}
+
+
 .elements__hover:hover{
-        transition-property: all;
+    transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 250ms;
 

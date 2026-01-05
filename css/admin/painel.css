@@ -1,48 +1,54 @@
 .main{
     display: flex;
     width: 100%;
-    justify-content:center;
+    justify-content:space-between;
     padding: 1.3rem;
     align-items: flex-start;
 }
 .painel{
-    display: none;
+    display: flex;
     flex-direction: column;
-    width: 15%;
-    height: 16rem;
+    width:25% ;
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
     padding: 0.9rem;
     background: var(--white);
     border-radius: 5px;
+    padding:2rem;
+    box-shadow: 0 2px 4px rgba(45, 90, 61, 0.08);
 }
 .painel__titulo{
     color: var(--cor-principal);
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-family: Crimson Text, serif;
+    font-weight: 600;
+    color:#1a1a1a ;
 }
-.painel__menu{
+.painel__card--input{
+    display:flex;
+    padding: .6rem;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+}
+.painel__card--input_icon{
     display: flex;
-    flex-direction: column;
-    line-height: 1.8rem;
+    justify-content: center;
+    padding: .5rem;
 }
-.painel__menu a{
-    cursor: pointer;
+.painel__card--input_icon svg{
+    width: 1.25rem;
+    height: 1.25rem;
+    color:#4a4a4a;
 }
-.painel__menu li:hover{
-    background: var(--esmerald-fundos);
-    font-size: 1.2rem;
-    border-radius: 4px;
-    padding: 0.5rem;
+
+.painel__card--input input{
     width: 100%;
 }
-.painel__rodape{
-    display: flex;
-    align-items: center;
-    color: red;
-    justify-content: center;
-    padding: 0.4rem;
-    margin-top: 0.9rem;
-}
-.painel__rodape:hover{
-    background: rgb(228, 227, 227);
-    border-radius: 3px;
+
+.painel__card--input input:focus{
+    #painel__card--input{
+        outline: 1px solid #c4302b;
+        border: 1px solid #c4302b;
+    }
 }
