@@ -208,17 +208,88 @@
         <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
         <section class="gerirLivros optionInfo">
             <div class="gerirLivros__header">
-                <strong>Livros</strong>
-                <a href="#">Adicionar</a>
+                <div class="livros__header--text">
+                    <h1>Gerenciamento de Livros</h1>
+                    <p>Gerencie a coleção completa da biblioteca digital</p>
+                </div>
+                <button class="livros__header--btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Adicionar Novo Livro
+                </button>
             </div>
+
+            <!--Secção de filtros de livros-->
+            <div class="gerirLivros__filtro">
+                <div class="filtro">
+                    <div class="filtro__busca filtro__items">
+                        <p>Buscar Livros</p>
+                        <div class="filtro__busca--input filtro__items-input">
+                            <div class="filtro__busca--icon">
+                                <svg class="w-5 h-5 text-text-secondary absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text"
+                                placeholder="Buscar por titulo ou Autor..."
+                            >
+                        </div>
+                    </div>
+                    <div class="filtro__Categoria filtro__items" >
+                        <p>Categoria</p>
+                        <select class="select__item filtro__items-input" name="" id="">
+                            <option >Todas Categorias</option>
+                            <option >Romance</option>
+                            <option >Fantasia</option>
+                            <option >Historia</option>
+                            <option >Biografia</option>
+                        </select>
+                    </div>
+                    <div class="filtro__status filtro__items">
+                        <p>Status</p>
+                        <select class="select__item filtro__items-input" name="" id="">
+                            <option >Todos Status</option>
+                            <option >Activo</option>
+                            <option >Inativo</option>
+                        </select>
+                    </div>
+                    <button class="filtro__btn">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Limpar Filtros
+                    </button>
+                </div>
+                <div class="filtro__accoes">
+                    <p>Mostrando 12 de 12 livros</p>
+                    <div>
+                        <p>0 Selecionados</p>
+                        <select class="select__item" name="" id="">
+                            <option>Acções em Maça</option>
+                            <option>Activar Selecionados</option>
+                            <option>Desativar Selecionados</option>
+                            <option>Excluir Selecionados</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Tabela onde estão listados todos os livros-->
             <table class="gerirLivros__table">
                 <thead class="table__header">
                     <tr>
-                        <td><strong>ID</strong></td>
-                        <td><strong>Título</strong></td>
-                        <td><strong>Autor</strong></td>
-                        <td><strong>Categoria</strong></td>
-                        <td><strong>Ações</strong></td>
+                        <th>
+                            <input type="checkbox"
+                                id="selectAll"
+                            >
+                        </th>
+                        <th><strong>Título</strong></th>
+                        <th><strong>Autor</strong></th>
+                        <th><strong>Categoria</strong></th>
+                        <th><strong>Status</strong></th>
+                        <th><strong>Ações</strong></th>
                     </tr>
                 </thead>
                 <tbody>
