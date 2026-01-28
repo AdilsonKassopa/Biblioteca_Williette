@@ -34,7 +34,11 @@
     border-radius: 6px;
     padding: 0.9rem;
     color: var(--white);
+    cursor: pointer;
 
+}
+.livros__header--btn:hover{
+    background-color: var(--green-hover);
 }
 .livros__header--btn svg{
     width: 1.25rem;
@@ -45,10 +49,6 @@
 /*
 *Estilo para div de filtros
 */
-
-.gerirLivros__header a:hover{
-    background: var(--green-hover);
-}
 .gerirLivros__filtro{
     display: flex;
     flex-direction: column;
@@ -141,7 +141,9 @@
 /*
 *Estilo da tabela que lista os livros
 */
-
+table{
+    display:table;
+}
 .gerirLivros__table{
     width: 100%;
 }
@@ -150,7 +152,7 @@
     height: 1.25rem;
 }
 .table__header tr td{
-    padding: .5rem;
+    padding: .9rem;
     border-bottom: 1px solid var(--green-border); 
 }
 .table__header--items{
@@ -168,6 +170,13 @@
     width: 1rem;
     height: 1rem;
 }
+.table__linhas{
+    transition: background-color,250ms;
+}
+.table__linhas:hover{
+    background-color: #f8f6f0a6;
+}
+
 .table__linhas td{
     border-bottom: 1px solid var(--green-border);
     padding: .9rem;
@@ -227,4 +236,10 @@
 .table__td div button svg{
     width: 1.25rem;
     height: 1.25rem;
+}
+
+.tarsitions_element:hover{
+    transform: translate(0, -.1rem);
+    transition: .25s;
+    box-shadow: 0 1px 1px 1px var(--grey-sombras);
 }
