@@ -1,5 +1,5 @@
 .categoria{
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 84%;
     padding: 1.3rem;

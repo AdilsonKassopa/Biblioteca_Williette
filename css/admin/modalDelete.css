@@ -1,0 +1,92 @@
+.section__modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(248 246 240 / 0.95);
+    padding-top: 8vh;
+}
+.overlay{/*over = por cima, lay = colocar, então over + lay colocar por cima*/
+    z-index: 9999;
+    inset: 0;/*abreviação de top:0, left:0, bottom:0 e right:0*/
+    position:fixed;
+}
+.section__modal--delete_modal{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 28rem;
+    border-radius: 1rem;
+    background-color: #fcf9f9;
+}
+.shadow-xl {
+    --tw-shadow: 0 20px 40px -8px rgba(45, 90, 61, 0.16);
+    --tw-shadow-colored: 0 20px 40px -8px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.delete__modal--body{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.delete__modal--body_svg{
+    display: flex;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: rgb(220 38 38 / 0.1);
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+.delete__modal--body_svg svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #dc2626;
+    opacity: 1;
+}
+.delete__modal--body_text{
+    flex: 1 1 0%;
+}
+.delete__modal--body_text h{
+    font-size: 1.125rem;
+    line-height: 1.5;
+    font-family: Crimson Text, serif;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+.delete__modal--body_text p{
+    color: #4a4a4a;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+.delete__modal--footer{
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+.delete__modal--footer button{
+    padding: 1rem;
+    border-radius: .5rem;
+    text-align: center;
+    cursor: pointer;
+}
+#modal_footer-canc{
+    background: transparent;
+    color:#064e3b;;
+}
+#modal_footer-canc:hover{
+    background-color: rgb(238, 236, 236);
+}
+#modal_footer-del{
+    background-color: #dc2626;
+    color: #fff;
+}
+#modal_footer-del:hover{
+    background-color: rgb(220 38 38 / 0.9);
+}

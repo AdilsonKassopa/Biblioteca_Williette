@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="./css/admin/adicionarLivros.css">
     <link rel="stylesheet" href="./css/admin/categoria.css">
     <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/admin/modalDelete.css">
+    <link rel="stylesheet" href="css/admin/add_edit_modal.css">
 </head>
 <body>
-     <header class="cabecalho">
+    <header class="cabecalho">
         <div class="logo">
             <div class="logo__letra">
                 B
@@ -206,7 +208,7 @@
         <!--A secção do dashboard termina aqui-->
 
         <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
-        <section class="gerirLivros optionInfo">
+        <section class="gerirLivros optionInfo hidden">
             <div class="gerirLivros__header">
                 <div class="livros__header--text">
                     <h1>Gerenciamento de Livros</h1>
@@ -397,41 +399,6 @@
         </section>
         <!--A secção gerir livro termina aqui-->
 
-        <!--Nesta secção teremos o formulario para Adicionar os livros-->
-        <section class="adicionarLivro optionInfo">
-            <div class="adicionar__form">
-                <h3 class="adicionar__form--titulo">Adicionar Livro</h3>
-
-                <input class="adicionar__form--input" type="text" placeholder="Título">
-
-                <input class="adicionar__form--input" type="text" placeholder="Autor">
-
-                <select class="adicionar__form--input"   >
-                    <option value="">Selecione a categoria</option>
-                        <option value="Ficção">Ficção</option>
-                        <option value="Não-Ficção">Não-Ficção</option>
-                        <option value="Ciência">Ciência</option>
-                        <option value="História">História</option>
-                        <option value="Biografias">Biografias</option>
-                        <option value="Infantil">Infantil</option>
-                        <option value="Tecnologia">Tecnologia</option>
-                </select>
-
-                <input class="adicionar__form--input" type="number"  value="2025">
-
-                <input class="adicionar__form--input" type="file" placeholder="URL da Capa"        accept="image/*" required>
-
-                <input class="adicionar__form--input" type="file" placeholder="URL do pdf" accept="application/pdf" required>
-
-                <textarea class="adicionar__form--input"  placeholder="Sinopse"></textarea>
-
-                <div class="adicionar__form--btns">
-                    <input id="adicionar__form--btn_salvar" type="submit" value="Salvar">
-                    <input id="adicionar__form--btn_cancelar" type="submit" value="Cancelar">
-                </div>
-            </div>
-        </section>
-        <!--Termina aqui a secção para Adicionar o livro-->
 
         <!--Nesta secção teremos o formulario para adicionar a categoria -->
         <section class="categoria optionInfo">
@@ -459,6 +426,243 @@
         </section>
     </section>
 <!--Termina aqui a secção principal da página-->
+
+<!--Seção de modais-->
+<section>
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal " class="section__modal overlay hidden">
+        <div class="section__modal--delete_modal shadow-xl ">
+            <div class="delete__modal--body">
+                <div class="delete__modal--body_svg">
+                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <div class="delete__modal--body_text">
+                    <h3 >Confirmar Exclusão</h3>
+                    <p class="text-text-secondary text-sm">
+                        Tem certeza que deseja excluir este livro? Esta ação não pode ser desfeita.
+                    </p>
+                </div>
+            </div>
+            <div class="delete__modal--footer">
+                <button id="modal_footer-canc" class="tarsitions_element">
+                    Cancelar
+                </button>
+                <button id="modal_footer-del" class="tarsitions_element">
+                    Excluir Livro
+                </button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal Add/Editar livros  -->
+    <div id="bookModal" class="section__modal overlay hidden" >
+        <div class="modal-content shadow-xl">
+            <div class="modal-content_head">
+                <div class="modal-content_head-content">
+                    <h2  id="modalTitle">Adicionar Novo Livro</h2>
+                    <button >
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <form id="bookForm" class="section__modal-form" onsubmit="handleBookSubmit(event)">
+                <!--  Upload dos livros-->
+                <div>
+                    <label class="label">Capa do Livro</label>
+                    <div class="section__modal-form_content">
+                        <div id="coverPreview" class="form__content-svg">
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="form__content--btns">
+                            <input 
+                                type="file" 
+                                id="bookCover" 
+                                accept="image/*" 
+                                class="hidden"
+                                onchange="handleCoverUpload(event)"
+                            >
+                            <button 
+                                type="button" 
+                                onclick="document.getElementById('bookCover').click()" 
+                                class="btn btn-outline mb-2"
+                            >
+                                Selecionar Imagem
+                            </button>
+                            <p >Formatos aceitos: JPG, PNG, WEBP (máx. 5MB)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="form__content--inp">
+                    <label for="bookTitle" class="label">Título do Livro *</label>
+                    <input 
+                        type="text" 
+                        id="bookTitle" 
+                        class="input" 
+                        placeholder="Digite o título do livro"
+                        required
+                    >
+                </div>
+
+                <!-- Author -->
+                <div class="form__content--inp">
+                    <label for="bookAuthor" class="label">Autor *</label>
+                    <input 
+                        type="text" 
+                        id="bookAuthor" 
+                        class="input" 
+                        placeholder="Digite o nome do autor"
+                        required
+                    >
+                </div>
+
+                <!-- ISBN -->
+                <div class="form__content--inp">
+                    <label for="bookISBN" class="label">ISBN</label>
+                    <input 
+                        type="text" 
+                        id="bookISBN" 
+                        class="input " 
+                        placeholder="978-85-359-0000-0"
+                    >
+                </div>
+
+                <!-- Category and Year -->
+                <div class="form__content--inp_category ">
+                    <div class="form__content--inp">
+                        <label for="bookCategory" class="label">Categoria *</label>
+                        <select id="bookCategory" class="input " required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Literatura Brasileira">Literatura Brasileira</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Ficção Científica">Ficção Científica</option>
+                            <option value="Fantasia">Fantasia</option>
+                            <option value="História">História</option>
+                            <option value="Biografia">Biografia</option>
+                            <option value="Poesia">Poesia</option>
+                        </select>
+                    </div>
+                    <div class="form__content--inp">
+                        <label for="bookYear" class="label">Ano de Publicação *</label>
+                        <input 
+                            type="number" 
+                            id="bookYear" 
+                            class="input " 
+                            placeholder="2025"
+                            min="1000"
+                            max="2025"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Synopsis -->
+                <div class="form__content--inp">
+                    <label for="bookSynopsis" class="label">Sinopse *</label>
+                    <textarea 
+                        id="bookSynopsis" 
+                        class="input w-full " 
+                        placeholder="Digite a sinopse do livro..."
+                        required
+                    ></textarea>
+                </div>
+
+                <!--  Upload do arquivo do livro-->
+                <div>
+                    <label class="label">Arquivo do Livro (PDF/EPUB) *</label>
+                    <div class="form__content--upFile">
+                        <input 
+                            type="file" 
+                            id="bookFile" 
+                            accept=".pdf,.epub" 
+                            class="hidden"
+                            onchange="handleFileUpload(event)"
+                            required
+                        >
+                        <div id="fileUploadArea" class="form__content--upFile_area">
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            <button 
+                                type="button" 
+                                onclick="document.getElementById('bookFile').click()" 
+                                class="btn"
+                            >
+                                Selecionar Arquivo
+                            </button>
+                            <p class="form__content--upFile_area-p1">ou arraste e solte o arquivo aqui</p>
+                            <p class="form__content--upFile_area-p2">Formatos aceitos: PDF, EPUB (máx. 50MB)</p>
+                        </div>
+                        <div id="fileUploadProgress" class="hidden">
+                            <div class="mb-2">
+                                <div class="upFile__progress-div1">
+                                    <span id="fileName" ></span>
+                                    <span id="fileSize" ></span>
+                                </div>
+                                <div class="upFile__progress-div2">
+                                    <div id="progressBar"  style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-success">Upload concluído!</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Status -->
+                <div>
+                    <label class="label">Status</label>
+                    <div class="form__content--status">
+                        <label >
+                            <input 
+                                type="radio" 
+                                name="bookStatus" 
+                                value="active" 
+                                class="focus:ring-accent "
+                                checked
+                            >
+                            <span >Ativo</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input 
+                                type="radio" 
+                                name="bookStatus" 
+                                value="inactive" 
+                                class=" focus:ring-accent "
+                            >
+                            <span >Inativo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form__content--actions">
+                    <button type="button" onclick="closeBookModal()" class="btn  form__content--actions_btnCanc">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn form__content--actions_btnConf">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Salvar Livro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- fim do Modal Add/Editar livros  -->
+</section>
+<!--Seção de modais termino-->
+
 
     <footer class="rodape">
         <div class="rodape__text">

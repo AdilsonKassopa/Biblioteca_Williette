@@ -106,6 +106,8 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 1rem;
     transition: background-color, 0.3s;
+    border-radius: 9px;
+    cursor: pointer;
 }
 .filtro__btn svg{
     width: 1.25rem;
@@ -128,10 +130,14 @@
     align-items: center;
     margin-top: 1.5rem;
 }
+.filtro__accoes div p{
+    width: 10rem;
+}
 .filtro__accoes div{
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
 }
 
 
@@ -143,6 +149,7 @@
 */
 table{
     display:table;
+    border-collapse: collapse;
 }
 .gerirLivros__table{
     width: 100%;
@@ -241,5 +248,4 @@ table{
 .tarsitions_element:hover{
     transform: translate(0, -.1rem);
     transition: .25s;
-    box-shadow: 0 1px 1px 1px var(--grey-sombras);
 }
