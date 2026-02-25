@@ -1,11 +1,12 @@
 .categoria{
     display: flex;
     flex-direction: column;
-    width: 84%;
+    width: 100%;
     padding: .6rem;
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
     border-radius: 7px;
     margin-left: 1rem;
+    background-color: #fff;
 }
 
 /*
@@ -91,6 +92,217 @@
     height: 1.5rem;
 }
 
+/*
+*Estilo secção procurar e filtro
+*/
+
+.categoria__search{
+    margin-bottom: 1.5rem;
+}
+
+.categoria__search--content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.search__content-input{
+    flex: 1 1 0%;
+    position: relative;
+    gap: 1rem;
+}
+
+.search__content-input svg{
+    position: absolute;
+    left: .20rem;
+    top: 43%;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #4a4a4a;
+    margin-right: .9rem;
+    transform: translate(0, -50%) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+.search__content-input input{
+    padding: 1.5rem;
+    width: 100%;
+    
+}
+.search__content-select{
+    display: flex;
+    gap: .5rem;
+}
+.search__content-select button{
+    border:none;
+}
+.search__content-select button:hover{
+    color: #2d5a3d;
+}
+.search__content-select button svg{
+    width: 3.5rem;
+    height:3.5rem;
+}
+
+/*
+*Estilo acções de categoria marcadas
+*/
+
+.categoria__mark{
+    margin-bottom: 1.5rem;
+    background-color: rgb(45 90 61 / 0.05);
+    border-color: rgb(45 90 61 / 0.2);
+}
+.categoria__mark--content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mark__content-text{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.mark__content-text span{
+    font-weight: 500;
+}
+.mark__content-text button{
+    font-size: 0.9375rem /* 15px */;
+    line-height: 1.6;
+    cursor:pointer;
+    background-color:transparent;
+}
+.mark__content-text button:hover{
+    color: #2d5a3d;
+}
+
+.mark__content-btns{
+    display: flex;
+    gap: .5rem;
+}
+
+.mark__content-btns button{
+    background-color: transparent;
+    border: none;
+}
+#mark_ativar{
+    color:#22c55e;
+}
+
+#mark_desativar{
+    color:#f59e0b;
+}
+#mark_excluir{
+    color:#dc2626;
+}
+.mark__content-btns button svg{
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/*
+*Estilo da lista de categoria (table)
+*/
+
+.categoria__list{
+    overflow-x: auto;
+}
+.table_th-checkbox{
+    width: 3rem;
+}
+.table_th-checkbox input{
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: .25rem;
+    border-color: rgba(45, 90, 61, 0.15);
+}
+
+.categoria__list thead tr th button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.categoria__list thead tr th button svg{
+    width: 1rem;
+    height: 1rem;
+    margin-left: .25rem;
+}
+.table_th-acoes{
+    text-align: right;
+}
+
+.category-row td input{
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: .25rem;
+    border-color: rgba(45, 90, 61, 0.15);
+}
+.category-row_tdcategoria{
+    display: flex;
+    align-items: center;
+}
+.tdcategoria__div1{
+    width: .5rem;
+    height: 2rem;
+    border-radius: .375rem;
+    margin-right: .75rem;
+}
+.tdcategoria__divp1{
+    font-weight: 500;
+
+}
+.tdcategoria__divp2{
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.4;
+}
+.category-row_tddescricao{
+    font-size: 0.9375rem /* 15px */;
+    line-height: 1.6;
+    max-width: 20rem;
+}
+.category-row_tdBtn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+}
+.category-row_tdBtn button{
+    padding: .5rem;
+    background-color: transparent;
+    cursor:pointer;
+}
+.category-row_tdBtn button svg{
+    width:1.25rem;
+    height: 1.25rem;
+}
+
+/*
+*Estilo de estado de categoria não encontrada
+*/
+
+.categoria__emptyState{
+    padding-top: 4rem /* 64px */;
+    padding-bottom: 4rem /* 64px */;
+    text-align: center;
+}
+.categoria__emptyState svg{
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+.categoria__emptyState h3{
+    font-family: Crimson Text, serif;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.categoria__emptyState p{
+    margin-bottom: 1.5rem /* 24px */;
+}
+.categoria__emptyState button{}
+
+
 
 
 
@@ -102,5 +314,8 @@
     }
     .categoria__estatistica{
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .categoria__search--content{
+        flex-direction: row;
     }
 }

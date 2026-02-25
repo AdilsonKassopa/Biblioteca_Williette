@@ -401,7 +401,7 @@
 
 
         <!--Nesta secção teremos o formulario para adicionar a categoria -->
-        <section class="categoria optionInfo">
+        <section class="categoria optionInfo hidden">
             <!-- categoria Header -->
             <div class="categoria__header">
                 <div class="categoria__header--content">
@@ -476,6 +476,346 @@
                     </div>
                 </div>
             </div>
+
+             <!-- secção procurar e filtro  -->
+            <div class="card categoria__search">
+                <div class="categoria__search--content">
+                    <div class="search__content-input">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="searchInput"
+                            placeholder="Buscar categorias..." 
+                            class="input pl-10 w-full"
+                            onkeyup="filterCategories()"
+                        >
+                    </div>
+                    <div class="search__content-select">
+                        <select id="statusFilter" class="input" onchange="filterCategories()">
+                            <option value="all">Todos os Status</option>
+                            <option value="active">Ativas</option>
+                            <option value="inactive">Inativas</option>
+                        </select>
+                        <select id="bookCountFilter" class="input" onchange="filterCategories()">
+                            <option value="all">Todos os Livros</option>
+                            <option value="empty">Vazias (0 livros)</option>
+                            <option value="low">Poucas (1-10 livros)</option>
+                            <option value="medium">Médias (11-50 livros)</option>
+                            <option value="high">Muitas (50+ livros)</option>
+                        </select>
+                        <button onclick="resetFilters()" class="btn btn-ghost">
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- acções de categoria marcadas -->
+            <div id="bulkActionsBar" class="card categoria__mark">
+                <div class="categoria__mark--content">
+                    <div class="mark__content-text">
+                        <span class="text-text-primary ">
+                            <span id="selectedCount">0</span> categorias selecionadas
+                        </span>
+                        <button onclick="deselectAll()" class="text-text-secondary  transition-colors">
+                            Desmarcar todas
+                        </button>
+                    </div>
+                    <div class="mark__content-btns">
+                        <button id="mark_ativar" onclick="bulkActivate()" class="btn btn-ghost hover:text-success">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Ativar
+                        </button>
+                        <button id="mark_desativar" onclick="bulkDeactivate()" class="btn btn-ghost hover:text-warning">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                            </svg>
+                            Desativar
+                        </button>
+                        <button id="mark_excluir" onclick="bulkDelete()" class="btn btn-ghost hover:text-error">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- lista de categoria -->
+            <div class="card">
+                <div class="categoria__list">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table_th-checkbox">
+                                    <input 
+                                        type="checkbox" 
+                                        id="selectAll"
+                                        class=" text-primary focus:ring-accent"
+                                        onchange="toggleSelectAll()"
+                                    >
+                                </th>
+                                <th>
+                                    <button onclick="sortCategories('name')" class=" hover:text-primary transition-colors">
+                                        Categoria
+                                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th>Descrição</th>
+                                <th>Categoria Pai</th>
+                                <th>
+                                    <button onclick="sortCategories('books')" class=" hover:text-primary transition-colors">
+                                        Livros
+                                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th>Status</th>
+                                <th>
+                                    <button onclick="sortCategories('date')" class=" hover:text-primary transition-colors">
+                                        Criada em
+                                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th class="table_th-acoes">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTableBody">
+                            <!-- Category Row 1 -->
+                            <tr class="category-row" data-status="active" data-books="45" data-name="Literatura Brasileira">
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        class="category-checkbox  text-primary focus:ring-accent"
+                                        onchange="updateBulkActions()"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="category-row_tdcategoria">
+                                        <div class="tdcategoria__div1 bg-primary"></div>
+                                        <div>
+                                            <p class="tdcategoria__divp1 text-text-primary">Literatura Brasileira</p>
+                                            <p class="tdcategoria__divp2 text-text-secondary">ID: CAT-001</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-text-secondary category-row_tddescricao">
+                                    <p class="line-clamp-2">Obras de autores brasileiros que representam a rica tradição literária nacional</p>
+                                </td>
+                                <td>
+                                    <span class="text-text-secondary text-sm">—</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-primary">45 livros</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">Ativa</span>
+                                </td>
+                                <td class="text-text-secondary text-sm">15/03/2024</td>
+                                <td>
+                                    <div class="category-row_tdBtn">
+                                        <button onclick="editCategory('Literatura Brasileira')" class="p-2 text-text-secondary hover:text-primary transition-colors" title="Editar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="toggleCategoryStatus('Literatura Brasileira', 'active')" class="p-2 text-text-secondary hover:text-warning transition-colors" title="Desativar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteCategory('Literatura Brasileira', 45)" class="p-2 text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Category Row 2 -->
+                            <tr class="category-row" data-status="active" data-books="38" data-name="Romance">
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        class="category-checkbox w-5 h-5 rounded border-border text-primary focus:ring-accent"
+                                        onchange="updateBulkActions()"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="category-row_tdcategoria">
+                                        <div class="tdcategoria__div1 bg-accent"></div>
+                                        <div>
+                                            <p class="tdcategoria__divp1 text-text-primary">Romance</p>
+                                            <p class="tdcategoria__divp2 text-text-secondary">ID: CAT-002</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-text-secondary category-row_tddescricao">
+                                    <p class="line-clamp-2">Narrativas ficcionais focadas em relacionamentos e desenvolvimento de personagens</p>
+                                </td>
+                                <td>
+                                    <span class="text-text-secondary text-sm">Literatura Brasileira</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-primary">38 livros</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">Ativa</span>
+                                </td>
+                                <td class="text-text-secondary text-sm">20/03/2024</td>
+                                <td>
+                                    <div class="category-row_tdBtn">
+                                        <button onclick="editCategory('Romance')" class="p-2 text-text-secondary hover:text-primary transition-colors" title="Editar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="toggleCategoryStatus('Romance', 'active')" class="p-2 text-text-secondary hover:text-warning transition-colors" title="Desativar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteCategory('Romance', 38)" class="p-2 text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Category Row 3 -->
+                            <tr class="category-row" data-status="active" data-books="52" data-name="Clássicos">
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        class="category-checkbox w-5 h-5 rounded border-border text-primary focus:ring-accent"
+                                        onchange="updateBulkActions()"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="category-row_tdcategoria">
+                                        <div class="tdcategoria__div1 bg-secondary "></div>
+                                        <div>
+                                            <p class="tdcategoria__divp1 text-text-primary">Clássicos</p>
+                                            <p class="tdcategoria__divp2 text-text-secondary">ID: CAT-003</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-text-secondary category-row_tddescricao">
+                                    <p class="line-clamp-2">Obras atemporais que moldaram a literatura mundial</p>
+                                </td>
+                                <td>
+                                    <span class="text-text-secondary text-sm">—</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-primary">52 livros</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">Ativa</span>
+                                </td>
+                                <td class="text-text-secondary text-sm">10/04/2024</td>
+                                <td>
+                                    <div class="category-row_tdBtn">
+                                        <button onclick="editCategory('Clássicos')" class="p-2 text-text-secondary hover:text-primary transition-colors" title="Editar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="toggleCategoryStatus('Clássicos', 'active')" class="p-2 text-text-secondary hover:text-warning transition-colors" title="Desativar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteCategory('Clássicos', 52)" class="p-2 text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Category Row 4 -->
+                            <tr class="category-row" data-status="active" data-books="28" data-name="Poesia">
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        class="category-checkbox w-5 h-5 rounded border-border text-primary focus:ring-accent"
+                                        onchange="updateBulkActions()"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="category-row_tdcategoria">
+                                        <div class="tdcategoria__div1 bg-primary-400"></div>
+                                        <div>
+                                            <p class="tdcategoria__divp1 text-text-primary">Poesia</p>
+                                            <p class="tdcategoria__divp2 text-text-secondary">ID: CAT-004</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-text-secondary category-row_tddescricao">
+                                    <p class="line-clamp-2">Expressões líricas e artísticas através de versos e estrofes</p>
+                                </td>
+                                <td>
+                                    <span class="text-text-secondary text-sm">Literatura Brasileira</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-primary">28 livros</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">Ativa</span>
+                                </td>
+                                <td class="text-text-secondary text-sm">05/05/2024</td>
+                                <td>
+                                    <div class="category-row_tdBtn">
+                                        <button onclick="editCategory('Poesia')" class="p-2 text-text-secondary hover:text-primary transition-colors" title="Editar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="toggleCategoryStatus('Poesia', 'active')" class="p-2 text-text-secondary hover:text-warning transition-colors" title="Desativar">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteCategory('Poesia', 28)" class="p-2 text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+
+                <!-- estado de categoria não encontrada -->
+                <div id="emptyState" class="hidden categoria__emptyState">
+                    <svg class=" text-text-tertiary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                    </svg>
+                    <h3 class="text-xl  text-text-primary ">Nenhuma categoria encontrada</h3>
+                    <p class="text-text-secondary ">Tente ajustar seus filtros ou crie uma nova categoria</p>
+                    <button onclick="openCreateCategoryModal()" class="btn btn-primary">
+                        Criar Nova Categoria
+                    </button>
+                </div>
+            </div>
+
         </section>
     </section>
 <!--Termina aqui a secção principal da página-->

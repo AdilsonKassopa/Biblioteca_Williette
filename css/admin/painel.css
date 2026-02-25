@@ -6,7 +6,7 @@
     align-items: flex-start;
 }
 .painel{
-    display: flex;
+    display: none;
     flex-direction: column;
     width:25% ;
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
