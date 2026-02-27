@@ -59,7 +59,7 @@
         <!--Termina aqui a secção do painel-->
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
-        <section  class="dashboard optionInfo">
+        <section  class="section  ">
             <div class="dashboard__header">
                 <div class="dashboard__header--text">
                     <h1 class="dashboard__titulo">Painel Administrativo</h1>
@@ -147,7 +147,7 @@
                     </a>
                     <a class="accoes__card elements__hover" href="#">
                         <div id="accoes__icon--configuraces" class="accoes__card--icon">
-                            <svg class="w-8 h-8 text-accent group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                             </svg>
                         </div>
@@ -208,7 +208,7 @@
         <!--A secção do dashboard termina aqui-->
 
         <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
-        <section class="gerirLivros optionInfo hidden">
+        <section class="section  hidden">
             <div class="gerirLivros__header">
                 <div class="livros__header--text">
                     <h1>Gerenciamento de Livros</h1>
@@ -225,23 +225,25 @@
             <!--Secção de filtros de livros-->
             <div class="gerirLivros__filtro">
                 <div class="filtro">
-                    <div class="filtro__busca filtro__items">
-                        <p>Buscar Livros</p>
-                        <div class="filtro__busca--input filtro__items-input">
-                            <div class="filtro__busca--icon">
-                                <svg class="w-5 h-5 text-text-secondary absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </div>
+                    <!-- procurar -->
+                    <div class="filtro__busca ">
+                        <label class="label">Buscar Livros</label>
+                        <div class="filtro__busca--input ">
                             <input 
                                 type="text"
                                 placeholder="Buscar por titulo ou Autor..."
+                                class="input"
                             >
+                            <svg class=" text-text-secondary  transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
                         </div>
                     </div>
-                    <div class="filtro__Categoria filtro__items" >
-                        <p>Categoria</p>
-                        <select class="select__item filtro__items-input" name="" id="">
+
+                    <!-- filtro de categoria -->
+                    <div class="filtro__Categoria" >
+                        <label class="label">Categoria</label>
+                        <select class="select__item input" name="" id="">
                             <option >Todas Categorias</option>
                             <option >Romance</option>
                             <option >Fantasia</option>
@@ -249,26 +251,36 @@
                             <option >Biografia</option>
                         </select>
                     </div>
-                    <div class="filtro__status filtro__items">
-                        <p>Status</p>
-                        <select class="select__item filtro__items-input" name="" id="">
+
+                    <!-- Estatos filtro -->
+                    <div class="filtro__status">
+                        <label class="label">Status</label>
+                        <select class="select__item input" name="" id="">
                             <option >Todos Status</option>
                             <option >Activo</option>
                             <option >Inativo</option>
                         </select>
                     </div>
-                    <button class="filtro__btn tarsitions_element">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
-                        Limpar Filtros
-                    </button>
+
+                    <!-- Reset Button -->
+                        <button class=" btn btn-ghost filtro__btn ">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                            Limpar Filtros
+                        </button>
                 </div>
+
+                <!-- Results Count -->
                 <div class="filtro__accoes">
-                    <p>Mostrando 12 de 12 livros</p>
+                    <p class="text-sm text-text-secondary">
+                        Mostrando <span id="resultsCount" class="font-medium text-text-primary">12</span> de <span class="font-medium text-text-primary">12</span> livros
+                    </p>
+
+                    <!-- Bulk Actions -->
                     <div>
-                        <p>0 Selecionados</p>
-                        <select class="select__item" name="" id="">
+                        <span class="text-sm text-text-secondary" id="selectedCount">0 Selecionados</span>
+                        <select class="input text-sm" name="" id="">
                             <option>Acções em Maça</option>
                             <option>Activar Selecionados</option>
                             <option>Desativar Selecionados</option>
@@ -279,129 +291,138 @@
             </div>
 
             <!--Tabela onde estão listados todos os livros-->
-            <table class="gerirLivros__table">
-                <thead class="table__header">
-                    <tr>
-                        <td>
-                            <input type="checkbox"
-                                id="selectAll"
-                            >
-                        </td>
-                        <td><strong>Capa</strong></td>
-                        <td>
-                            <div class="table__header--items">
-                                <strong>Título</strong>
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
-                                </svg>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="table__header--items">
-                                <strong>Autor</strong>
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
-                                </svg>
-                            </div>
-                        </td>
-                        <td><strong>Categoria</strong></td>
-                        <td><strong>Status</strong></td>
-                        <td><strong>Ações</strong></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table__linhas">
-                        <td>
-                            <input type="checkbox"
-                                class="selectItem"
-                            >
-                        </td>
-                        <td>
-                            <div class="table__linha--capa">
-                                <img 
-                                    src="./assets/vanguarda_saga.jpeg" 
-                                    alt="Capa do livro Dom Casmurro de Machado de Assis"
-                                    class=""
-                                    loading="lazy"
-                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
-                                >
-                            </div>
-                        </td>
-                        <td>Livro Exemplo 1</td>
-                        <td>Autor 1</td>
-                        <td><span class="tdspan_categoria">Ficção</span></td>
-                        <td><span class="status--activo">Activo</span></td>
-                        <td class="table__td">
-                           <div>
-                                <button onclick="viewBook(1)" class="table__td--btn"  title="Visualizar">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                    </svg>
-                                </button>
-                                <button onclick="editBook(1)" class="table__td--btn"  title="Editar">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                    </svg>
-                                </button>
-                                <button onclick="deleteBook(1)" class="table__td--btn_del" title="Excluir">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="table__linhas">
-                        <td>
-                            <input type="checkbox"
-                                class="selectItem"
-                            >
-                        </td>
-                        <td>
-                            <div class="table__linha--capa">
-                                <img 
-                                    src="./assets/filhas_da_lua.jpeg" 
-                                    alt="Capa do livro Dom Casmurro de Machado de Assis"
-                                    class=""
-                                    loading="lazy"
-                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
-                                >
-                            </div>
-                        </td>
-                        <td>Livro Exemplo 2</td>
-                        <td>Autor 2</td>
-                        <td><span class="tdspan_categoria">Não-Ficção</span></td>
-                        <td><span class="status--inativo">Inativo</span></td>
-                        <td class="table__td">
-                            <div>
-                                <button onclick="viewBook(1)" class="table__td--btn"  title="Visualizar">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                    </svg>
-                                </button>
-                                <button onclick="editBook(1)" class="table__td--btn"  title="Editar">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                    </svg>
-                                </button>
-                                <button onclick="deleteBook(1)" class="table__td--btn_del" title="Excluir">
-                                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="livros__list">
+                <div class="livros__list--content">
+                    <table class="gerirLivros__table table">
+                        <thead class="table__header">
+                            <tr>
+                                <td>
+                                    <input type="checkbox"
+                                        id="selectAll"
+                                    >
+                                </td>
+                                <td><strong>Capa</strong></td>
+                                <td>
+                                    <div class="table__header--items">
+                                        <strong>Título</strong>
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="table__header--items">
+                                        <strong>Autor</strong>
+                                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
+                                    </div>
+                                </td>
+                                <td><strong>Categoria</strong></td>
+                                <td><strong>Status</strong></td>
+                                <td><strong>Ações</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table__linhas">
+                                <td>
+                                    <input type="checkbox"
+                                        class="selectItem"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="table__linha--capa">
+                                        <img 
+                                            src="./assets/vanguarda_saga.jpeg" 
+                                            alt="Capa do livro Dom Casmurro de Machado de Assis"
+                                            class=""
+                                            loading="lazy"
+                                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                                        >
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="font-medium text-text-primary">Vanguard Saga</div>
+                                </td>
+                                <td class="text-text-primary">Autor 1</td>
+                                <td><span class="badge badge-primary">Ficção</span></td>
+                                <td><span class="badge badge-success">Activo</span></td>
+                                <td class="table__td">
+                                <div>
+                                        <button onclick="viewBook(1)" class=" text-text-secondary hover:text-primary transition-colors"  title="Visualizar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="editBook(1)" class=" text-text-secondary hover:text-primary transition-colors"  title="Editar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteBook(1)" class=" text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table__linhas">
+                                <td>
+                                    <input type="checkbox"
+                                        class="selectItem"
+                                    >
+                                </td>
+                                <td>
+                                    <div class="table__linha--capa">
+                                        <img 
+                                            src="./assets/filhas_da_lua.jpeg" 
+                                            alt="Capa do livro Dom Casmurro de Machado de Assis"
+                                            class=""
+                                            loading="lazy"
+                                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                                        >
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="font-medium text-text-primary">Filhas da Lua</div>
+                                </td>
+                                <td class="text-text-primary">Autor 2</td>
+                                <td><span class="badge badge-primary">Não-Ficção</span></td>
+                                <td><span class="badge badge-warning">Inativo</span></td>
+                                <td class="table__td">
+                                    <div>
+                                        <button onclick="viewBook(1)" class=" text-text-secondary hover:text-primary transition-colors"  title="Visualizar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="editBook(1)" class=" text-text-secondary hover:text-primary transition-colors"  title="Editar">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                            </svg>
+                                        </button>
+                                        <button onclick="deleteBook(1)" class=" text-text-secondary hover:text-error transition-colors"  title="Excluir">
+                                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </section>
         <!--A secção gerir livro termina aqui-->
 
 
         <!--Nesta secção teremos o formulario para adicionar a categoria -->
-        <section class="categoria optionInfo hidden">
+        <section class="section hidden ">
             <!-- categoria Header -->
             <div class="categoria__header">
                 <div class="categoria__header--content">

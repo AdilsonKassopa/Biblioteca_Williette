@@ -6,7 +6,6 @@
     background: var(--white);
     /*box-shadow: 1px 1px 1px 1px  var(--grey-sombras);*/
     border-radius: 7px;
-    margin-left: 2rem;
 
 }
 .dashboard__header{
@@ -88,6 +87,7 @@
 .accoes__cards{
     display: flex;
     gap: 1.5rem;
+    width:100%;
 }
 
 .accoes__card--icon{
@@ -117,6 +117,7 @@
     padding: 2rem;
     gap: .9rem;
     box-shadow: 0 2px 4px rgba(45, 90, 61, 0.08);
+    width: 27rem;
 }
 /*.accoes__card:hover{
     #accoes__icon--livro{

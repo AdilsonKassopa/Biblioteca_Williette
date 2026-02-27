@@ -3,10 +3,9 @@
     flex-direction: column;
     width: 100%;
     padding: 1.3rem;
-    background: var(--white);
+    background-color: var(--white);
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
-    border-radius: 7px;
-    margin-left: 2rem;
+    border-radius: 1rem;
 }
 .gerirLivros__header{
     display: flex;
@@ -50,64 +49,84 @@
 *Estilo para div de filtros
 */
 .gerirLivros__filtro{
-    display: flex;
-    flex-direction: column;
     padding: 1.5rem;
     width: 100%;
-    margin-bottom: 1.3rem;
-
+    margin-bottom: 1.5rem;
+    background-color: #f8f6f0;
+    border-radius:1rem;
+    border: 1px solid;
+    border-color: rgba(45, 90, 61, 0.15);
 }
 .filtro{
     display: flex;
     gap: 1rem;
     width: 100%;
-    align-items: flex-end;
-}
-.filtro__items{
-    display: flex;
     flex-direction: column;
 }
-.filtro__items p{
-    margin-bottom: 1rem;
+
+.filtro__busca{
+    flex: 1 1 0%;
 }
-.filtro__items-input{
-    width: 14rem;
+
+.filtro__busca--input{
+    position: relative;
+}
+
+.filtro__busca--input input{
+     padding-left: 2.5rem;
+     width: 100%;
     
 }
-.filtro__items-input:focus-within{
+/* .filtro__items-input:focus-within{
         outline: 3px solid #c4302b;
         outline-offset: 2px;
         border: 1px solid #c4302b;
-        /*box-shadow: 0 0 0 3px #c4302b;*/
-}
-.filtro__busca--input{
+        
+} 
+*/
+/* .filtro__busca--input{
     display: flex;
     border: 1px solid rgba(45, 90, 61, 0.08);
     border-radius:9px;
     padding: .8rem;
     align-items: flex-start;
-}
+} */
 
-.filtro__busca--icon svg{
+.filtro__busca--input svg{
     width: 1.25rem;
     height: 1.25rem;
-    margin-right: .5rem;
+    position: absolute;
+    left: .75rem;
+    top: 30%;
+}
+
+/*
+* Estilo da div filtro de categoria
+*/
+.filtro__Categoria{
+    flex: 1 1 0%;
 }
 .select__item{
-    background-color: transparent;
-    border: 1px solid rgba(45, 90, 61, 0.08);
-    padding: 1rem;
-    border-radius:9px;
+    width: 100%;
 
 }
+
+/*
+*Estilo do estatos filtro
+*/
+.filtro__status{
+    flex: 1 1 0%;
+}
+
+/*
+* Estilo do botão reset
+*/
 .filtro__btn{
     display:flex;
-    background: transparent;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 1rem;
-    transition: background-color, 0.3s;
-    border-radius: 9px;
-    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-bottom: 0;
 }
 .filtro__btn svg{
     width: 1.25rem;
@@ -117,50 +136,60 @@
     
    
 }
-.filtro__btn:hover{
-    background-color: var(--cor-principal);
-    border-radius: 9px;
-    padding: 1rem;
-    
-}
+
 
 .filtro__accoes{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
-.filtro__accoes div p{
-    width: 10rem;
+.filtro__accoes p span{
+    font-weight: 500;
 }
+
 .filtro__accoes div{
     display: flex;
     gap: 1rem;
     align-items: center;
-    justify-content: center;
 }
 
+.filtro__accoes div span{
+    display: flex;
+    width: 50%;
+}
 
+.filtro__accoes div select{
+    padding-top: 0.5rem /* 8px */;
+    padding-bottom: 0.5rem /* 8px */;
+    width: 100%;
+}
 
 
 
 /*
 *Estilo da tabela que lista os livros
 */
-table{
-    display:table;
-    border-collapse: collapse;
+.livros__list{
+    background-color: #f8f6f0;
+    border-radius:1rem;
+    border:1px solid;
+    border-color: rgba(45, 90, 61, 0.15);
+    overflow: hidden;
 }
+.livros__list--content{
+    overflow-x: auto;
+}
+
 .gerirLivros__table{
     width: 100%;
 }
 .gerirLivros__table input[type ='checkbox']{
     width: 1.25rem;
     height: 1.25rem;
-}
-.table__header tr td{
-    padding: .9rem;
-    border-bottom: 1px solid var(--green-border); 
+    border-radius: 0.25rem;
+    border-color: rgba(45, 90, 61, 0.15);
+    color: #2d5a3d ;
 }
 .table__header--items{
     display: flex;
@@ -177,42 +206,20 @@ table{
     width: 1rem;
     height: 1rem;
 }
-.table__linhas{
-    transition: background-color,250ms;
-}
-.table__linhas:hover{
-    background-color: #f8f6f0a6;
-}
 
-.table__linhas td{
-    border-bottom: 1px solid var(--green-border);
-    padding: .9rem;
-}
 .table__linha--capa{
     width: 3rem;
     height: 4rem;
     background-color: #f8f6f0;
     border-radius: 0.25rem;
     overflow: hidden;
+    
 }
 .table__linha--capa img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.tdspan_categoria{
-    padding: .4rem .8rem;
-    border-radius: 5px;
-    background-color: #e2e1df81;
-    border: .6px solid #a8a8a767;
-}
-.status--activo{
-    color:#43d375 ;
-    background-color: #bff1d175;
-    padding: .4rem .8rem;
-    border-radius: 5px;
-    border: .6px solid #43d37536;
-} 
 .status--inativo{
     color: #f08b07;
     background-color:#f7d2a231 ;
@@ -228,24 +235,29 @@ table{
 }
 
 .table__td div button{
-    color: #4a4a4a;
     padding: 0.5rem;
     transition: color, 250ms,fill,stroke;
     background-color: transparent;
     cursor: pointer;
 }
-.table__td--btn:hover{
-    color: #2d5a3d;
-}
-.table__td--btn_del:hover{
-    color: #dc2626;
-}
+
 .table__td div button svg{
     width: 1.25rem;
     height: 1.25rem;
 }
 
 .tarsitions_element:hover{
-    transform: translate(0, -.1rem);
+    transform: translateY(-.1rem);
     transition: .25s;
+}
+
+
+@media (min-width: 1024px) {
+    .filtro{
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    .livros__list{
+        display: block;
+    }
 }
