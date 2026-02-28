@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/login/header.css">
-    <link rel="stylesheet" href="./css/reset.css">
+
     <link rel="stylesheet" href="./css/login/footer.css">
     <link rel="stylesheet" href="./css/admin/painel.css">
     <link rel="stylesheet" href="./css/admin/dashboard.css">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/admin/modalDelete.css">
     <link rel="stylesheet" href="css/admin/add_edit_modal.css">
+    <link rel="stylesheet" href="css/admin/modalCategory.css">
+    <link rel="stylesheet" href="./css/reset.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -59,7 +61,7 @@
         <!--Termina aqui a secção do painel-->
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
-        <section  class="section  ">
+        <!-- <section  class="  section  "> -->
             <div class="dashboard__header">
                 <div class="dashboard__header--text">
                     <h1 class="dashboard__titulo">Painel Administrativo</h1>
@@ -871,7 +873,7 @@
     </div>
 
         <!-- Modal Add/Editar livros  -->
-    <div id="bookModal" class="section__modal overlay hidden" >
+    <div id="bookModal" class=" hidden section__modal overlay " >
         <div class="modal-content shadow-xl">
             <div class="modal-content_head">
                 <div class="modal-content_head-content">
@@ -1072,10 +1074,147 @@
             </form>
         </div>
     </div>
-
     <!-- fim do Modal Add/Editar livros  -->
+
+        <!-- Create/Edit Category Modal -->
+    <div id="categoryModal" class=" hidden section__modal overlay  " onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content shadow-xl" onclick="event.stopPropagation()">
+            <div class="modal-content_head">
+                <div class="modal-content_head-content">
+                    <h2 id="modalTitle" class="text-2xl text-text-primary">Nova Categoria</h2>
+                    <button onclick="closeCategoryModal()" class=" text-text-secondary hover:text-text-primary transition-colors">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <form id="categoryForm" class="p-6" onsubmit="handleCategorySubmit(event)">
+                <div class="section__modal-form">
+                    <!-- Category Name -->
+                    <div class="form__content--inp">
+                        <label for="categoryName" class="label">Nome da Categoria *</label>
+                        <input 
+                            type="text" 
+                            id="categoryName" 
+                            class="input w-full" 
+                            placeholder="Ex: Literatura Brasileira"
+                            required
+                        >
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form__content--inp">
+                        <label for="categoryDescription" class="label">Descrição</label>
+                        <textarea 
+                            id="categoryDescription" 
+                            class="input w-full min-h-[100px] resize-y" 
+                            placeholder="Descreva o tipo de livros que pertencem a esta categoria..."
+                        ></textarea>
+                        <p class="text-xs text-text-secondary mt-1">Máximo de 200 caracteres</p>
+                    </div>
+
+                    <!-- Parent Category -->
+                    <div class="form__content--inp">
+                        <label for="parentCategory" class="label">Categoria Pai (Opcional)</label>
+                        <select id="parentCategory" class="input w-full">
+                            <option value="">Nenhuma (Categoria Principal)</option>
+                            <option value="literatura-brasileira">Literatura Brasileira</option>
+                            <option value="classicos">Clássicos</option>
+                            <option value="ficcao-cientifica">Ficção Científica</option>
+                            <option value="historia">História</option>
+                            <option value="filosofia">Filosofia</option>
+                        </select>
+                        <p class="text-xs text-text-secondary mt-1">Selecione uma categoria pai para criar uma subcategoria</p>
+                    </div>
+
+                    <!-- Status -->
+                    <div>
+                        <label class="label">Status</label>
+                        <div class="form__content--status">
+                            <label >
+                                <input 
+                                    type="radio" 
+                                    name="categoryStatus" 
+                                    value="active" 
+                                    checked
+                                    class=" text-primary focus:ring-accent border-border"
+                                >
+                                <span class=" text-text-primary">Ativa</span>
+                            </label>
+                            <label >
+                                <input 
+                                    type="radio" 
+                                    name="categoryStatus" 
+                                    value="inactive"
+                                    class=" text-primary focus:ring-accent border-border"
+                                >
+                                <span class=" text-text-primary">Inativa</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__form-btns">
+                    <button type="button" onclick="closeCategoryModal()" class="btn btn-ghost flex-1">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary flex-1">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Salvar Categoria
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class=" section__modal overlay hidden " onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content max-w-md" onclick="event.stopPropagation()">
+            <div class="modal__content-body">
+                <div class=" modal__content-body_img mx-auto">
+                    <svg class=" text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl   text-text-primary ">Confirmar Exclusão</h3>
+                <p class="text-text-secondary">
+                    Tem certeza que deseja excluir a categoria "<span id="deleteCategoryName" class="font-medium text-text-primary"></span>"?
+                </p>
+                <div id="deleteWarning" class="modal__content-body_warning">
+                    <div class="body_warning-content">
+                        <svg class=" text-warning flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <div class="ml-3">
+                            <p class="text-sm text-warning p1">Atenção!</p>
+                            <p class="text-sm text-text-secondary">
+                                Esta categoria contém <span id="deleteBookCount" class="font-medium text-text-primary"></span> livros. 
+                                Eles serão movidos para "Sem Categoria".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__content-body_btns">
+                    <button  onclick="closeDeleteModal()" class="btn btn-ghost ">
+                        Cancelar
+                    </button>
+                    <button  onclick="confirmDelete()" class="btn btn-accent ">
+                        Excluir Categoria
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 <!--Seção de modais termino-->
+
+
+
 
 
     <footer class="rodape">

@@ -102,6 +102,39 @@ html {
   background-color: #399556;
   border-color: #399556;
 }
+.btn-accent{
+  background-color: #c4302b;
+  color: #fff;
+}
+.btn-accent:hover{
+  background-color: #b02b27;
+}
+
+
+
+.input{
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid;
+    border-color: rgba(45, 90, 61, 0.15);
+    background-color: #fefcf7;
+    color: #1a1a1a;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    min-height: 44px;
+}
+.input:focus{
+    outline: 2px solid #c4302b;
+    outline-offset: 2px;
+    border-color: #c4302b;
+}
+
+
+
 
 .card{
   background-color: #f8f6f0;
@@ -124,6 +157,19 @@ html {
     --tw-shadow-colored: 0 2px 4px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+
+.shadow-xl {
+    --tw-shadow: 0 20px 40px -8px rgba(45, 90, 61, 0.16);
+    --tw-shadow-colored: 0 20px 40px -8px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.text-2xl {
+    font-size: 1.5rem /* 24px */;
+    line-height: 1.3;
+}
+
+
 .text-text-primary{
   color: #1a1a1a;
 }
@@ -183,6 +229,11 @@ html {
     font-weight: 500;
 }
 
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .bg-primary {
     --tw-bg-opacity: 1;
     background-color: rgb(45 90 61 / var(--tw-bg-opacity, 1)) /* #2d5a3d */;
@@ -234,6 +285,7 @@ html {
     --tw-bg-opacity: 1;
     background-color: rgb(196 48 43 / var(--tw-bg-opacity, 1)) /* #c4302b */;
 }
+
 
 .transform {
     transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
@@ -298,4 +350,36 @@ html {
     background-color: var(--white);
     box-shadow: 1px 1px 1px 1px  var(--grey-sombras);
     border-radius: 1rem;
+}
+
+.label{
+    display: block;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.overlay{/*over = por cima, lay = colocar, então over + lay colocar por cima*/
+    z-index: 9999;
+    inset: 0;/*abreviação de top:0, left:0, bottom:0 e right:0*/
+    position:fixed;
+}
+
+.modal-content{
+  background-color: #f8f6f0;
+  border-radius: 1rem;
+  max-width: 42rem;
+  width: 100%;
+  max-height: 84vh;
+  overflow: auto;
+}
+
+.max-w-md {
+    max-width: 28rem /* 448px */;
+}
+
+.hidden{
+    display: none;
 }
