@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/home/main.css">
 </head>
 <body>
-     <header class="cabecalho">
+    <header class="cabecalho">
         <div class="logo">
             <div class="logo__letra">
                 B
@@ -34,115 +34,329 @@
     </header>
 
 
-    <section class="main">
-        <section class="main__categoria">
-            <div class="main__categoria--card">
-                <h3>Categoria</h3>
-                <ul>
-                    <li><a href="#">Todos</a></li>
-                    <li><a href="#">Ficção</a></li>
-                    <li><a href="#">Não-Fiçcão</a></li>
-                    <li><a href="#">Ciência</a></li>
-                    <li><a href="">História</a></li>
-                    <li><a href="#">Biografias</a></li>
-                    <li><a href="#">Infantil</a></li>
-                    <li><a href="#">Tecnologia</a></li>
-                </ul>
-            </div>
-        </section>
-        <section class="main__destaque">
-            
+    <main class="main">
+        <nav class="main__nav" aria-label="Breadcrumb">
+            <ol class="main__nav--list space-x-2 text-sm text-text-secondary">
+                <li>
+                    <a href="../index.html" class="hover:text-primary transition-colors">Catálogo</a>
+                </li>
+                <li>
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </li>
+                <li>
+                    <span class="text-text-primary">Detalhes do Livro</span>
+                </li>
+            </ol>
+        </nav>
+        <!-- Secção de detalhes do livro -->
+        <div class="book_details">
+            <!-- Book Cover -->
+            <div class="book_details--info_1">
                 <div>
-                    <h2 class="main_destaque--titulo">Destaques</h2>
-                </div>
-            <div class="main__destaque--cards">
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
+                    <div class="book__detail--img shadow-lg">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_161f5619a-1766641011259.png" 
+                            alt="Capa do livro 'Dom Casmurro' de Machado de Assis mostrando uma ilustração clássica com elementos da literatura brasileira"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
                     </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
-                        </div>
-                    </div>   
-                </div>
-                
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
+
+                    <!-- Action Buttons -->
+                    <div class="book__detail--btns space-y-3">
+                        <button 
+                            onclick="window.location.href='online_reader.html'" 
+                            class="btn btn-primary "
+                        >
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            Ler Online
+                        </button>
+
+                        <button class="btn btn-outline ">
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Download PDF
+                            <span class="text-xs text-text-secondary">(2.4 MB)</span>
+                        </button>
+
+                        <button class="btn btn-ghost ">
+                            <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            Adicionar aos Favoritos
+                        </button>
                     </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
+
+                    <!-- Book Stats -->
+                    <div class="book__detail--stats">
+                        <h3 class=" font-medium text-text-primary mb-3">Estatísticas</h3>
+                        <div class="space-y-2 text-sm">
+                            <div >
+                                <span class="text-text-secondary">Visualizações:</span>
+                                <span class="text-text-primary">1.247</span>
+                            </div>
+                            <div >
+                                <span class="text-text-secondary">Downloads:</span>
+                                <span class="text-text-primary">892</span>
+                            </div>
+                            <div >
+                                <span class="text-text-secondary">Formato:</span>
+                                <span class="text-text-primary">PDF, EPUB</span>
+                            </div>
+                            <div >
+                                <span class="text-text-secondary">Páginas:</span>
+                                <span class="text-text-primary">256</span>
+                            </div>
                         </div>
-                    </div>   
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Information -->
+            <div class="book_details--info_2">
+                <!-- Title and Author -->
+                <div class="book_details--header">
+                    <h1 class="text-4xl  text-text-primary ">Dom Casmurro</h1>
+                    <div class="header__div1">
+                        <div >
+                            <svg class=" text-text-secondary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span class="text-lg text-text-primary font-medium">Machado de Assis</span>
+                        </div>
+                        <div >
+                            <svg class=" text-text-secondary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-text-secondary">Publicado em 1899</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Badge -->
+                    <div class="header__div2">
+                        <span class="badge badge-primary">Literatura Brasileira</span>
+                        <span class="badge badge-primary">Romance</span>
+                        <span class="badge badge-primary">Clássico</span>
+                    </div>
                 </div>
 
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
-                    </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
+                <!-- Synopsis -->
+                <div class="book_details--synopsis">
+                    <h2 class="text-2xl font-heading font-semibold text-text-primary mb-4">Sinopse</h2>
+                    <div class="prose max-w-none">
+                        <div id="synopsis-short" class="text-text-secondary leading-relaxed">
+                            <p >
+                                Dom Casmurro é uma das obras mais importantes da literatura brasileira, escrita por Machado de Assis e publicada em 1899. O romance é narrado em primeira pessoa por Bento Santiago, apelidado de Dom Casmurro, que relata sua história de amor com Capitu, sua vizinha e amiga de infância.
+                            </p>
+                            <p >
+                                A narrativa se desenvolve em torno da dúvida que consome o protagonista sobre a fidelidade de sua esposa. Machado de Assis constrói magistralmente um enredo que explora os ciúmes, a desconfiança e a complexidade das relações humanas...
+                            </p>
                         </div>
-                    </div>   
+                        
+                        <div id="synopsis-full" class="hidden text-text-secondary leading-relaxed">
+                            <p >
+                                Dom Casmurro é uma das obras mais importantes da literatura brasileira, escrita por Machado de Assis e publicada em 1899. O romance é narrado em primeira pessoa por Bento Santiago, apelidado de Dom Casmurro, que relata sua história de amor com Capitu, sua vizinha e amiga de infância.
+                            </p>
+                            <p >
+                                A narrativa se desenvolve em torno da dúvida que consome o protagonista sobre a fidelidade de sua esposa. Machado de Assis constrói magistralmente um enredo que explora os ciúmes, a desconfiança e a complexidade das relações humanas.
+                            </p>
+                            <p >
+                                O livro é considerado um dos maiores exemplos do realismo brasileiro, apresentando uma análise psicológica profunda dos personagens. A famosa questão sobre o adultério de Capitu permanece em aberto, deixando ao leitor a interpretação dos fatos narrados pelo protagonista.
+                            </p>
+                            <p >
+                                Com sua prosa elegante e irônica, Machado de Assis retrata a sociedade carioca do século XIX, abordando temas universais como amor, ciúme, traição e a natureza humana. A obra influenciou gerações de escritores e continua sendo estudada e admirada até hoje.
+                            </p>
+                        </div>
+                        
+                        <button 
+                            id="synopsis-toggle" 
+                            onclick="toggleSynopsis()" 
+                            class="text-primary hover:text-primary-600 font-medium transition-colors mt-2"
+                        >
+                            Ler mais
+                        </button>
+                    </div>
                 </div>
 
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
-                    </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
+                <!-- Author Biography -->
+                <div class="book_details--biography">
+                    <h2 class="text-2xl font-heading font-semibold text-text-primary mb-4">Sobre o Autor</h2>
+                    <div>
+                        <div class="space-x-4">
+                            <img 
+                                src="https://img.rocket.new/generatedImages/rocket_gen_img_1a577c12d-1766641008988.png" 
+                                alt="Retrato histórico de Machado de Assis, escritor brasileiro do século XIX"
+                                loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                            >
+                            <div>
+                                <h3 class="font-heading font-medium text-text-primary mb-2">Machado de Assis (1839-1908)</h3>
+                                <p class="text-text-secondary text-sm leading-relaxed">
+                                    Joaquim Maria Machado de Assis foi um escritor brasileiro, considerado o maior nome da literatura nacional. Fundador da Academia Brasileira de Letras, foi seu primeiro presidente. Autor de romances, contos, crônicas, poesias e peças teatrais, destacou-se especialmente pelos romances da segunda fase, incluindo Dom Casmurro, O Cortiço e Memórias Póstumas de Brás Cubas.
+                                </p>
+                            </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
 
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
-                    </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
+                <!-- Publication Details -->
+                <div class="book_details--publication">
+                    <h2 class="text-2xl font-heading font-semibold text-text-primary ">Detalhes da Publicação</h2>
+                    <div class="book_details--publication_div">
+                        <div class="publication__divs">
+                            <h3 class="font-medium text-text-primary mb-2">Informações Gerais</h3>
+                            <div class="space-y-2 text-sm">
+                                <div >
+                                    <span class="text-text-secondary">Título Original:</span>
+                                    <span class="text-text-primary">Dom Casmurro</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">Ano de Publicação:</span>
+                                    <span class="text-text-primary">1899</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">Idioma:</span>
+                                    <span class="text-text-primary">Português</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">País:</span>
+                                    <span class="text-text-primary">Brasil</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>   
+                        
+                        <div class="publication__divs">
+                            <h3 class="font-medium text-text-primary mb-2">Detalhes Técnicos</h3>
+                            <div class="space-y-2 text-sm">
+                                <div >
+                                    <span class="text-text-secondary">Gênero:</span>
+                                    <span class="text-text-primary">Romance</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">Movimento:</span>
+                                    <span class="text-text-primary">Realismo</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">Páginas:</span>
+                                    <span class="text-text-primary">256</span>
+                                </div>
+                                <div >
+                                    <span class="text-text-secondary">ISBN:</span>
+                                    <span class="text-text-primary">978-85-359-0277-5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Related Books Section -->
+        <section class="books__related">
+            <div class="books__related--header">
+                <h2 class="text-2xl font-heading font-semibold text-text-primary">Livros Relacionados</h2>
+                <a href="../index.html" class="text-primary hover:text-primary-600 font-medium transition-colors">
+                    Ver todos
+                </a>
+            </div>
+            
+            <div class="books__related--body">
+                <!-- Related Book 1 -->
+                <div class="shadow-sm transition-all hover:shadow-md hover:-translate-y-1 book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_10c3f6145-1766431982212.png" 
+                            alt="Capa do livro 'Memórias Póstumas de Brás Cubas' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Memórias Póstumas de Brás Cubas</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
                 </div>
 
-                <div class="main__destaque--card">
-                    <div class="main__destaque--card_capa">
-                        <img src="./assets/semente.jpeg" alt="">
+                <!-- Related Book 2 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1f46ce01a-1766641010101.png" 
+                            alt="Capa do livro 'O Cortiço' de Aluísio Azevedo"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
                     </div>
-                    <div class="main__destaque--card_detalhes">
-                        <strong>Livro Exemplo1</strong>
-                        <p>Autor1:</p>
-                        <div class="card__detalhes--rodape">
-                            <p class="card__detalhes--rodape_categoria">Ficçao 2000</p>
-                            <input class="card__detalhes--rodape_btn" type="button" value="Ler">
-                        </div>
-                    </div>   
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">O Cortiço</h3>
+                        <p class="text-text-secondary text-xs mb-2">Aluísio Azevedo</p>
+                        <span class="badge badge-primary text-xs">Naturalismo</span>
+                    </div>
                 </div>
 
+                <!-- Related Book 3 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1134c06f7-1766641007759.png" 
+                            alt="Capa do livro 'Helena' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Helena</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 4 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1caad2231-1766641009790.png" 
+                            alt="Capa do livro 'Iaiá Garcia' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Iaiá Garcia</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 5 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1c0df5ea6-1766641011214.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
             </div>
         </section>
-    </section>
+    </main>
 
 
     <footer class="rodape">
