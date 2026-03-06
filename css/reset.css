@@ -473,6 +473,13 @@ html {
     margin-left: calc(1rem /* 16px */ * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem /* 24px */ * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem /* 24px */ * calc(1 - var(--tw-space-x-reverse)));
+}
+
+
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;

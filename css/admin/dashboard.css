@@ -112,6 +112,7 @@
 }
 .accoes__card{
     display: flex;
+    flex: 1 1 0%;
     background-color: var(--esmerald-fundos);
     border-radius: 9px;
     padding: 2rem;

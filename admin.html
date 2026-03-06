@@ -29,17 +29,20 @@
                 <p>Acesso livre ao acervo digital</p>
             </div>
         </div>
-        <div class="search">
-            <input class="search__inp" type="text"  placeholder="Pesquisar por titulo, autor ou ISBN...">
-        </div>
-        <div class="links">
-            <ul>
-                <li><a href="./sobre.html">Sobre</a></li>
-                <li><a href="./contactos.html">Contactos</a></li>
-                <li class="links__btn--entrar"><a href="./loginTela.html">Entrar</a></li>
-            </ul>
 
-        </div>
+
+        <!-- Navigation -->
+        <nav class=" nav space-x-6">
+            <a href="admin_dashboard.html" class="text-text-secondary hover:text-primary transition-colors">Dashboard</a>
+            <a href="book_management.html" class="text-text-secondary hover:text-primary transition-colors">Livros</a>
+            <a href="category_management.html" class="text-primary font-medium hover:text-primary transition-colors">Categorias</a>
+            <button onclick="handleLogout()" class="btn btn-ghost text-sm">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                Sair
+            </button>
+        </nav>
     </header>
 <!--Esta é secção principal onde estaram todas as outras  secções que compõem esta página -->
 
@@ -61,8 +64,8 @@
         <!--Termina aqui a secção do painel-->
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
-        <!-- <section  class="  section  "> -->
-            <div class="dashboard__header">
+        <section  class="  section  "> 
+            <div class="dashboard__header ">
                 <div class="dashboard__header--text">
                     <h1 class="dashboard__titulo">Painel Administrativo</h1>
                     <p>Bem-vindo de volta, Administrador</p>
@@ -75,7 +78,7 @@
                 </div>
             </div>
             <div class="dashboard__cards">
-                <div class="dashboard__card elements__hover">
+                <div class="dashboard__card elements__hover card">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard__card elements__hover">
+                <div class="dashboard__card elements__hover card">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" style="color: #8b4513;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="dashboard__card elements__hover">
+                <div class="dashboard__card elements__hover card">
                     <div class="dashboard__card--header">
                        <div class="card__header--icon">
                             <svg class="" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,7 +128,7 @@
             <div class="accoes">
                 <h2>Ações Rápidas</h2>
                 <div class="accoes__cards">
-                    <a  class="accoes__card elements__hover" href="#">
+                    <a  class="accoes__card elements__hover card" href="#">
                         <div id="accoes__icon--livro" class="accoes__card--icon">
                             <svg  class=" group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -136,7 +139,8 @@
                             <p>Cadastrar livro no acervo</p>
                         </div>
                     </a>
-                    <a class="accoes__card elements__hover" href="#">
+
+                    <a class="accoes__card elements__hover card" href="#">
                         <div id="accoes__icon--categoria" class="accoes__card--icon">
                             <svg class="w-8 h-8 text-secondary group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
@@ -147,7 +151,8 @@
                             <p>Cadastrar nova Categoria </p>
                         </div>
                     </a>
-                    <a class="accoes__card elements__hover" href="#">
+
+                    <a class="accoes__card elements__hover card" href="#">
                         <div id="accoes__icon--configuraces" class="accoes__card--icon">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
@@ -162,7 +167,7 @@
             </div>
 
             <!--Actividades Recentes-->
-            <div class="actividades">
+            <div class="actividades card">
                 <h2 class="actividade__titulo">Actividades Recentes</h2>
                 <!--actividade item 1-->
                 <div class="actividades__card">
