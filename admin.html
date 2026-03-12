@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/login/header.css">
+    <link rel="stylesheet" href="./css/admin/header.css">
 
     <link rel="stylesheet" href="./css/login/footer.css">
     <link rel="stylesheet" href="./css/admin/painel.css">
@@ -64,7 +64,7 @@
         <!--Termina aqui a secção do painel-->
 
         <!--Esta é a secção onde aparecerá todas as informações do dashboard-->
-        <section  class="  section  "> 
+        <section  class="  section  hidden"> 
             <div class="dashboard__header ">
                 <div class="dashboard__header--text">
                     <h1 class="dashboard__titulo">Painel Administrativo</h1>
@@ -215,7 +215,7 @@
         <!--A secção do dashboard termina aqui-->
 
         <!--Esta é a secção onde seram listados todos os livros e onde o admin podera gerir os livros, como editar ou apagar um livro-->
-        <section class="section  hidden">
+        <section class="section  ">
             <div class="gerirLivros__header">
                 <div class="livros__header--text">
                     <h1>Gerenciamento de Livros</h1>
@@ -429,7 +429,7 @@
 
 
         <!--Nesta secção teremos o formulario para adicionar a categoria -->
-        <section class="section hidden ">
+        <section class="section  hidden">
             <!-- categoria Header -->
             <div class="categoria__header">
                 <div class="categoria__header--content">
@@ -849,9 +849,9 @@
 <!--Termina aqui a secção principal da página-->
 
 <!--Seção de modais-->
-<section>
+<section class="w-full h-full">
     <!-- Delete Confirmation Modal -->
-    <div id="deleteModal " class="section__modal overlay hidden">
+    <div id="deleteModal " class="  section__modal overlay hidden">
         <div class="section__modal--delete_modal shadow-xl ">
             <div class="delete__modal--body">
                 <div class="delete__modal--body_svg">
@@ -878,7 +878,7 @@
     </div>
 
         <!-- Modal Add/Editar livros  -->
-    <div id="bookModal" class=" hidden section__modal overlay " >
+    <div id="bookModal" class="  section__modal overlay hidden" >
         <div class="modal-content shadow-xl">
             <div class="modal-content_head">
                 <div class="modal-content_head-content">
@@ -1082,7 +1082,7 @@
     <!-- fim do Modal Add/Editar livros  -->
 
         <!-- Create/Edit Category Modal -->
-    <div id="categoryModal" class=" hidden section__modal overlay  " onclick="closeModalOnBackdrop(event)">
+    <div id="categoryModal" class="  section__modal overlay  hidden" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content shadow-xl" onclick="event.stopPropagation()">
             <div class="modal-content_head">
                 <div class="modal-content_head-content">

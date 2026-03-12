@@ -342,6 +342,9 @@ html {
     background-color: rgb(196 48 43 / var(--tw-bg-opacity, 1)) /* #c4302b */;
 }
 
+.container-padding{
+
+}
 
 .transform {
     transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
@@ -446,6 +449,13 @@ html {
     z-index: 9999;
     inset: 0;/*abreviação de top:0, left:0, bottom:0 e right:0*/
     position:fixed;
+    background-color: rgb(248 246 240 / 0.95);
+}
+.w-full{
+    width: 100%;
+}
+.h-full{
+    height: 100%;
 }
 
 .modal-content{

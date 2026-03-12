@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Administrador</title>
+    <!-- estilos comuns -->
+    <link rel="stylesheet" href="./css/admin/header.css">
+    <link rel="stylesheet" href="./css/admin/profile.css">
+    <link rel="stylesheet" href="./css/reset.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <div class="logo__letra">B</n            </div>
+            <div class="logo__text">
+                <strong>Biblioteca Williette</strong>
+                <p>Acesso livre ao acervo digital</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class=" nav space-x-6">
+            <a href="admin_dashboard.html" class="text-text-secondary hover:text-primary transition-colors">Dashboard</a>
+            <a href="book_management.html" class="text-text-secondary hover:text-primary transition-colors">Livros</a>
+            <a href="category_management.html" class="text-text-secondary hover:text-primary transition-colors">Categorias</a>
+            <a href="perfil_admin.html" class="text-primary font-medium hover:text-primary transition-colors">Perfil</a>
+            <button onclick="handleLogout()" class="btn btn-ghost text-sm">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                Sair
+            </button>
+        </nav>
+    </header>
+
+    <section class="main">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <!-- avatar placeholder -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="avatar-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1>João Administrador</h1>
+                    <p class="profile-role">Administrador</p>
+                    <p class="profile-email">
+                        <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 12H8m8 0a4 4 0 10-8 0 4 4 0 008 0zm0 4h-4m4 0v4m-8-4H4m0 0v4" />
+                        </svg>
+                        admin@williette.org
+                    </p>
+                    <button class="btn btn-outline" onclick="editProfile()">
+                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5h6m-3-3v6m1 4l6 6m0-6l-6 6M3 3l18 18" />
+                        </svg>
+                        Editar perfil
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8c-1.657 0-3 .895-3 2v4a2 2 0 004 0v-4c0-1.105-1.343-2-3-2zM5 20h14a2 2 0 002-2v-5.586A1.994 1.994 0 0019.586 11L17 8.414A1.994 1.994 0 0015 8H9a1.994 1.994 0 00-1.414.586L4.414 11A1.994 1.994 0 004 12.414V18a2 2 0 002 2z" />
+                    </svg>
+                    <div>
+                        <div class="stat-number">1.247</div>
+                        <div class="stat-label">Livros adicionados</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Categorias geradas</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h4l3 8 4-16 3 8h4" />
+                    </svg>
+                    <div>
+                        <div class="stat-number">24.567</div>
+                        <div class="stat-label">Visualizações</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rodape">
+        <div class="rodape__text">
+            <p>&copy; 2025 Biblioteca Williette</p>
+            <p>bibliotea@williettte.org   +244 900 000 000</p>
+        </div>
+    </footer>
+
+    <script src="./scripts/admin/profile.js"></script>
+</body>
+</html>

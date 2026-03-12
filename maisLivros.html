@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaisLivros</title>
+    <link rel="stylesheet" href="./css/login/header.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login/footer.css">
+    <link rel="stylesheet" href="./css/home/main.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <div class="logo__letra">
+                B
+            </div>
+            <div class="logo__text">
+                <strong>Biblioteca Williette</strong>
+                <p>Acesso livre ao acervo digital</p>
+            </div>
+        </div>
+        <div class="search">
+            <input class="search__inp" type="text"  placeholder="Pesquisar por titulo, autor ou ISBN...">
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./sobre.html">Sobre</a></li>
+                <li><a href="./contactos.html">Contactos</a></li>
+                <li class="links__btn--entrar"><a href="./loginTela.html">Entrar</a></li>
+            </ul>
+
+        </div>
+    </header>
+    <main class="main">
+        <section class="books__related">
+            
+            
+            <div class="books__related--body">
+                <!-- Related Book 1 -->
+                <div class="shadow-sm transition-all hover:shadow-md hover:-translate-y-1 book-card group cursor-pointer " onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_10c3f6145-1766431982212.png" 
+                            alt="Capa do livro 'Memórias Póstumas de Brás Cubas' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Memórias Póstumas de Brás Cubas</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 2 -->
+                <div class="book-card group cursor-pointer " onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1f46ce01a-1766641010101.png" 
+                            alt="Capa do livro 'O Cortiço' de Aluísio Azevedo"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">O Cortiço</h3>
+                        <p class="text-text-secondary text-xs mb-2">Aluísio Azevedo</p>
+                        <span class="badge badge-primary text-xs">Naturalismo</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 3 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1134c06f7-1766641007759.png" 
+                            alt="Capa do livro 'Helena' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Helena</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 4 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1caad2231-1766641009790.png" 
+                            alt="Capa do livro 'Iaiá Garcia' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Iaiá Garcia</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+
+                <!-- Related Book 5 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1c0df5ea6-1766641011214.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+                <!-- Related Book 6 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_16b4b7c5e-1766641007773.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+                <!-- Related Book 7 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1484a69d3-1766641007486.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+                <!-- Related Book 8 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_15a826d4d-1766641015735.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+                <!-- Related Book 9 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_10e088e17-1766641007496.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+                <!-- Related Book 10 -->
+                <div class="book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
+                    <div class="aspect-[3/4] bg-surface overflow-hidden">
+                        <img 
+                            src="https://img.rocket.new/generatedImages/rocket_gen_img_1b43ed5fd-1765233954554.png" 
+                            alt="Capa do livro 'Quincas Borba' de Machado de Assis"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                        >
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-heading font-medium text-text-primary text-sm mb-1 line-clamp-2">Quincas Borba</h3>
+                        <p class="text-text-secondary text-xs mb-2">Machado de Assis</p>
+                        <span class="badge badge-primary text-xs">Romance</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape__text">
+            <p>&copy 2025 Biblioteca Williette</p>
+            <p>bibliotea@williettte.org   +244 900 000 000</p>
+        </div>
+    </footer>
+</body>
+</html>

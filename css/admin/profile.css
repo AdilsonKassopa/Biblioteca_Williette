@@ -1,0 +1,127 @@
+/* estilos para a página de perfil do administrador */
+.profile-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.3rem;
+}
+
+.profile-card{
+    display: flex;
+    gap: 2rem;
+    background: var(--white);
+    border-radius: 7px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(45, 90, 61, 0.08);
+    align-items: center;
+}
+
+.profile-avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #f8f6f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-icon{
+    width: 80px;
+    height: 80px;
+    color: var(--cor-principal);
+}
+
+.profile-info h1{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: .25rem;
+}
+
+.profile-role,
+.profile-email{
+    color: #4a4a4a;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-icon{
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+    color: #8b4513;
+}
+
+.btn-outline{
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    border: 2px solid var(--cor-principal);
+    color: var(--cor-principal);
+    background: transparent;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-outline:hover{
+    background-color: rgb(45 90 61 / 0.1);
+}
+
+.btn-icon{
+    width: 1rem;
+    height: 1rem;
+}
+
+.profile-stats{
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-card{
+    flex: 1 1 250px;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    background: var(--esmerald-fundos);
+    padding: 1.5rem;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(45, 90, 61, 0.08);
+}
+
+.stat-card svg{
+    width: 2rem;
+    height: 2rem;
+    color: var(--cor-principal);
+}
+
+.stat-number{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.stat-label{
+    font-size: .875rem;
+    color: #4a4a4a;
+}
+
+/* responsivo */
+@media (max-width: 768px){
+    .profile-card{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-avatar{
+        margin-bottom: 1rem;
+    }
+    .profile-stats{
+        flex-direction: column;
+    }
+}
