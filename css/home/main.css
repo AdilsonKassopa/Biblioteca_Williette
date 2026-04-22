@@ -153,7 +153,9 @@
     flex-shrink: 0;
 }
 .book_details--biography div div div{
-    margin-bottom: .5rem;
+    display:flex;
+    flex-direction:column;
+    padding: 0;
 }
 /*
 *Style Publication Details
@@ -237,5 +239,187 @@
 @media (min-width: 1280px) {
     .books__related--body {
         grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* [ADICIONADO - MOBILE] Media queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .main {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .book_details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .book_details--info_1 div {
+        position: static;
+    }
+
+    .book__detail--img {
+        margin-bottom: 1rem;
+    }
+
+    .book__detail--btns button {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .book__detail--btns button svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .book__detail--stats {
+        padding: 0.75rem;
+    }
+
+    .book_details--header h1 {
+        font-size: 1.75rem;
+    }
+
+    .header__div1 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .header__div2 {
+        flex-wrap: wrap;
+    }
+
+    .book_details--synopsis {
+        margin-bottom: 1.5rem;
+    }
+
+    .book_details--biography div div {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book_details--biography div div img {
+        margin-bottom: 1rem;
+    }
+
+    .book_details--publication_div {
+        grid-template-columns: 1fr;
+    }
+
+    .books__related--header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .books__related--body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .book-card {
+        padding: 0.5rem;
+    }
+
+    .book-card h3 {
+        font-size: 0.875rem;
+    }
+
+    .book-card p {
+        font-size: 0.75rem;
+    }
+}
+
+/* [ADICIONADO - MOBILE] Media queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .main {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .book_details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .book_details--info_1 div {
+        position: static;
+    }
+
+    .book__detail--img {
+        margin-bottom: 1rem;
+    }
+
+    .book__detail--btns button {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .book__detail--btns button svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .book__detail--stats {
+        padding: 0.75rem;
+    }
+
+    .book_details--header h1 {
+        font-size: 1.75rem;
+    }
+
+    .header__div1 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .header__div2 {
+        flex-wrap: wrap;
+    }
+
+    .book_details--synopsis {
+        margin-bottom: 1.5rem;
+    }
+
+    .book_details--biography div div {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book_details--biography div div img {
+        margin-bottom: 1rem;
+    }
+
+    .book_details--publication_div {
+        grid-template-columns: 1fr;
+    }
+
+    .books__related--header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .books__related--body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .book-card {
+        padding: 0.5rem;
+    }
+
+    .book-card h3 {
+        font-size: 0.875rem;
+    }
+
+    .book-card p {
+        font-size: 0.75rem;
     }
 }

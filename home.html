@@ -56,13 +56,7 @@
             <!-- Book Cover -->
             <div class="book_details--info_1">
                 <div>
-                    <div class="book__detail--img shadow-lg">
-                        <img 
-                            src="https://img.rocket.new/generatedImages/rocket_gen_img_161f5619a-1766641011259.png" 
-                            alt="Capa do livro 'Dom Casmurro' de Machado de Assis mostrando uma ilustração clássica com elementos da literatura brasileira"
-                            loading="lazy"
-                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
-                        >
+                    <div id="bookDetailImg" class="book__detail--img shadow-lg">
                     </div>
 
                     <!-- Action Buttons -->
@@ -70,6 +64,7 @@
                         <button 
                             onclick="window.location.href='online_reader.html'" 
                             class="btn btn-primary "
+                            name="btnLerOnline"
                         >
                             <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -77,7 +72,7 @@
                             Ler Online
                         </button>
 
-                        <button class="btn btn-outline ">
+                        <button class="btn btn-outline " name="btnDowload">
                             <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
@@ -85,7 +80,7 @@
                             <span class="text-xs text-text-secondary">(2.4 MB)</span>
                         </button>
 
-                        <button class="btn btn-ghost ">
+                        <button class="btn btn-ghost  " name="btnFavoritos">
                             <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                             </svg>
@@ -122,27 +117,26 @@
             <div class="book_details--info_2">
                 <!-- Title and Author -->
                 <div class="book_details--header">
-                    <h1 class="text-4xl  text-text-primary ">Dom Casmurro</h1>
+                    <h1 id="detailHeaderTitulo" class="text-4xl  text-text-primary "></h1>
                     <div class="header__div1">
                         <div >
                             <svg class=" text-text-secondary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
-                            <span class="text-lg text-text-primary font-medium">Machado de Assis</span>
+                            <span id="detailHeaderAutor" class="text-lg text-text-primary font-medium"></span>
                         </div>
                         <div >
                             <svg class=" text-text-secondary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                            <span class="text-text-secondary">Publicado em 1899</span>
+                            <span id="detailHeaderAnoDePublicacao" class="text-text-secondary"></span>
                         </div>
                     </div>
                     
                     <!-- Category Badge -->
                     <div class="header__div2">
-                        <span class="badge badge-primary">Literatura Brasileira</span>
-                        <span class="badge badge-primary">Romance</span>
-                        <span class="badge badge-primary">Clássico</span>
+                        <span id="detailHeaderCategoriaPai" class="badge badge-primary"></span>
+                        <span id="detailHeaderCategoria" class="badge badge-primary"></span>
                     </div>
                 </div>
 
@@ -151,12 +145,6 @@
                     <h2 class="text-2xl font-heading font-semibold text-text-primary mb-4">Sinopse</h2>
                     <div class="prose max-w-none">
                         <div id="synopsis-short" class="text-text-secondary leading-relaxed">
-                            <p >
-                                Dom Casmurro é uma das obras mais importantes da literatura brasileira, escrita por Machado de Assis e publicada em 1899. O romance é narrado em primeira pessoa por Bento Santiago, apelidado de Dom Casmurro, que relata sua história de amor com Capitu, sua vizinha e amiga de infância.
-                            </p>
-                            <p >
-                                A narrativa se desenvolve em torno da dúvida que consome o protagonista sobre a fidelidade de sua esposa. Machado de Assis constrói magistralmente um enredo que explora os ciúmes, a desconfiança e a complexidade das relações humanas...
-                            </p>
                         </div>
                         
                         <div id="synopsis-full" class="hidden text-text-secondary leading-relaxed">
@@ -176,6 +164,7 @@
                         
                         <button 
                             id="synopsis-toggle" 
+                            name="synopsisToggle"
                             onclick="toggleSynopsis()" 
                             class="text-primary hover:text-primary-600 font-medium transition-colors mt-2"
                         >
@@ -188,7 +177,7 @@
                 <div class="book_details--biography">
                     <h2 class="text-2xl font-heading font-semibold text-text-primary mb-4">Sobre o Autor</h2>
                     <div>
-                        <div class="space-x-4">
+                        <div class=" flex items-start space-x-4">
                             <img 
                                 src="https://img.rocket.new/generatedImages/rocket_gen_img_1a577c12d-1766641008988.png" 
                                 alt="Retrato histórico de Machado de Assis, escritor brasileiro do século XIX"
@@ -265,7 +254,7 @@
                 </a>
             </div>
             
-            <div class="books__related--body">
+            <div id="relatedBody" class="books__related--body">
                 <!-- Related Book 1 -->
                 <div class="shadow-sm transition-all hover:shadow-md hover:-translate-y-1 book-card group cursor-pointer" onclick="window.location.href='book_details.html'">
                     <div class="aspect-[3/4] bg-surface overflow-hidden">
@@ -366,5 +355,7 @@
             <p>bibliotea@williettte.org   +244 900 000 000</p>
         </div>
     </footer>
+
+    <script src="./scripts/home.js" type="module"></script>
 </body>
 </html>

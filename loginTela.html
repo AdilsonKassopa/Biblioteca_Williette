@@ -45,57 +45,105 @@
                 <h2 class="login__card--header_titulo">Área do Administrador</h2>
                 <p>Acesso restrito para gerenciamento de conteúdo</p>
             </div>
+
+            <div class="p-6 sm:p-8">
+                <!-- Alert Message (Hidden by default) -->
+                <div id="alertMessage" class="hidden mb-6 p-4 rounded-md" role="alert">
+                    <div class="flex items-start">
+                        <svg id="alertIcon" class="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="flex-1">
+                            <p id="alertText" class="text-sm font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="login__card--body">
-                <label for="login_inp_email">Email <sup style="color: red;">*</sup></label>
-                <div class="inputs">
-                    <div class="inputs__icon">
+                <label id="login_label_email" class="label" for="login_inp_email">Email <sup style="color: red;">*</sup></label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                     </div>
-                    <input class="login__input--text"
-                        id="login_inp_email"
+                    <input 
                         type="email" 
-                        placeholder="Email" 
-                        required aria-required="true"
+                        id="email" 
+                        name="email"
+                        class="input pl-10 w-full"
+                        placeholder="Digite seu email"
+                        autocomplete="username"
+                        required
+                        aria-required="true"
+                        aria-describedby="username-error"
                     >
                 </div>
-                <label id="inp_email--error" for="login_inp_email"></label>
+                <label id="inp_email--error" class="label text-error" for="login_inp_email" style="color: red;"></label>
 
-                <label for="login_inp_senha">Senha <sup style="color: red;">*</sup></label>
-                <div class="inputs">
-                    <div class="inputs__icon">
+                <label id="login_label_senha" class="label" for="login_inp_senha">Senha <sup style="color: red;">*</sup></label>
+                
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
-                    <input class="login__input--text" 
-                        id="login_inp_senha" 
+                    <input 
                         type="password" 
-                        placeholder="Senha" 
-                        required aria-required="true"
+                        id="password" 
+                        name="password"
+                        class="input pl-10 pr-10 w-full"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                        aria-required="true"
+                        aria-describedby="password-error"
                     >
                     <button 
                         type="button" 
                         id="togglePassword"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:text-text-primary transition-colors"
                         aria-label="Mostrar senha"
-                        class="teste"
                     >
-                        <svg id="eyeIcon" class="" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                         </svg>
+                        <svg id="eyeOffIcon" class=" w-5 h-5 hidden" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.875 18.825A10.05 10.05 0 0112 19
+                            c-4.478 0-8.268-2.943-9.543-7
+                            a9.97 9.97 0 011.563-3.029"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6.223 6.223A9.956 9.956 0 0112 5
+                            c4.478 0 8.268 2.943 9.543 7
+                            a9.97 9.97 0 01-4.143 5.262"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 00-3-3"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3l18 18"></path>
+                        </svg>
                     </button>
                 </div>
-                <label id="inp_senha--error" for="login_inp_senha"></label>
+                <label id="inp_senha--error" class=" text-error" for="login_inp_senha" style="color: red;"></label>
 
-                <div class="login__card--btns">
-                    <input id="login__card--btn-Entrar" 
-                    class="login__card--btn" 
-                    type="submit" value="Entar">
-                    <a id="login__card--btn-Voltar" class="login__card--btn" href="./home.html">Voltar</a>
-                </div>
-                <div class="login__card--tex_aviso">
+                <button 
+                    type="submit" 
+                    id="submitButton"
+                    class="btn btn-primary w-full mt-10 flex items-center justify-center"
+                >
+                    <span id="buttonText">Entrar</span>
+                    <svg id="loadingSpinner" class="hidden animate-spin ml-2 h-5 w-5 text-primary-foreground" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+                <div class="login__card--tex_aviso mt-5">
                     <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
@@ -117,5 +165,8 @@
             <p>bibliotea@williettte.org   +244 900 000 000</p>
         </div>
     </footer>
+
+    <!--Area de scripts-->
+    <script src="./scripts/loginScripts.js"></script>
 </body>
 </html>

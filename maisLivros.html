@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaisLivros</title>
     <link rel="stylesheet" href="./css/login/header.css">
-    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login/footer.css">
     <link rel="stylesheet" href="./css/home/main.css">
+    <link rel="stylesheet" href="./css/reset.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -35,11 +35,20 @@
     </header>
     <main class="main">
         <section class="books__related">
-            
-            
-            <div class="books__related--body">
+            <!--codigos adicionados-->
+                <div class="books__related--header">
+                    <h2>Livros disponíveis</h2>
+                    
+                </div>
+
+                <div class="books__related--body" id="booksContainer">
+                    <p>Carregando livros...</p>
+                </div>
+
+                <!--codigos de origem-->
+            <div class="hidden books__related--body ">
                 <!-- Related Book 1 -->
-                <div class="shadow-sm transition-all hover:shadow-md hover:-translate-y-1 book-card group cursor-pointer " onclick="window.location.href='book_details.html'">
+                <div class="book-card group cursor-pointer " onclick="window.location.href='book_details.html'">
                     <div class="aspect-[3/4] bg-surface overflow-hidden">
                         <img 
                             src="https://img.rocket.new/generatedImages/rocket_gen_img_10c3f6145-1766431982212.png" 
@@ -222,5 +231,6 @@
             <p>bibliotea@williettte.org   +244 900 000 000</p>
         </div>
     </footer>
+    <script src="./scripts/maisLivros.js"></script>
 </body>
 </html>
