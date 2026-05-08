@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login/footer.css">
     <link rel="stylesheet" href="./css/home/main.css">
+    <link rel="stylesheet" href="./css/admin/header.css">
 </head>
 <body>
-    <header class="cabecalho">
+    <header id="cabecalho" class="cabecalho">
         <div class="logo">
             <div class="logo__letra">
                 B
@@ -20,7 +21,9 @@
                 <p>Acesso livre ao acervo digital</p>
             </div>
         </div>
-        
+        <div class="search">
+            <input class="search__inp" type="text"  placeholder="Pesquisar por titulo, autor ou ISBN...">
+        </div>
         <div class="links">
             <ul>
                 <li><a href="./home.html">Home</a></li>
@@ -37,7 +40,7 @@
         <nav class="main__nav" aria-label="Breadcrumb">
             <ol class="main__nav--list space-x-2 text-sm text-text-secondary">
                 <li>
-                    <a href="#" class="hover:text-primary transition-colors">Catálogo</a>
+                    <a href="../index.html" class="hover:text-primary transition-colors">Catálogo</a>
                 </li>
                 <li>
                     <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
@@ -60,7 +63,6 @@
                     <!-- Action Buttons -->
                     <div class="book__detail--btns space-y-3">
                         <button 
-                            onclick="window.location.href='online_reader.html'" 
                             class="btn btn-primary "
                             name="btnLerOnline"
                         >
@@ -69,7 +71,7 @@
                             </svg>
                             Ler Online
                         </button>
-
+                        
                         <button name="btnDownBookDetails" class="btn btn-outline " name="btnDowload">
                             <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -77,7 +79,6 @@
                             Download PDF
                             <span class="text-xs text-text-secondary">(2.4 MB)</span>
                         </button>
-
                     </div>
 
                     <!-- Book Stats -->
@@ -169,19 +170,6 @@
                 </div>
             </div>
         </div>
-        <!-- Related Books Section -->
-        <section class="books__related">
-            <div class="books__related--header">
-                <h2 class="text-2xl font-heading font-semibold text-text-primary">Livros Relacionados</h2>
-                <a href="./maisLivros.html" class="text-primary hover:text-primary-600 font-medium transition-colors">
-                    Ver todos
-                </a>
-            </div>
-            
-            <div id="relatedBody" class="books__related--body">
-
-            </div>
-        </section>
     </main>
 
 
@@ -192,6 +180,7 @@
         </div>
     </footer>
 
-    <script src="./scripts/home.js" type="module"></script>
+    <script type="module" src="./scripts/admin/visualBook.js"></script>
+    
 </body>
 </html>

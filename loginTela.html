@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./css/login/header.css">
-    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login/loginForm.css">
     <link rel="stylesheet" href="./css/login/footer.css">
+    <link rel="stylesheet" href="css/admin/add_edit_modal.css">
+    <link rel="stylesheet" href="css/admin/modalDelete.css">
+    <link rel="stylesheet" href="css/admin/modalCategory.css">
+    
     <link rel="stylesheet" href="./css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
 </head>
 <body>
     <header class="cabecalho">
@@ -143,6 +148,11 @@
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                 </button>
+
+                <div class="flex items-center justify-center p-4">
+                    <a id="linkalterarSenha" href="#logiAlterSenhaModal" class = "text-text-secondary">Esqueceste a senha?</a>
+                </div>
+
                 <div class="login__card--tex_aviso mt-5">
                     <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -159,6 +169,222 @@
             </div>
         </div>
     </section>
+
+    <!--Seção de Modal-->
+
+    <section class="w-full h-full">
+
+        <div id="logiAlterSenhaModal" class="  section__modal overlay  hidden" >
+        <div class="modal-content shadow-xl" >
+            <div class="modal-content_head">
+                <div class="modal-content_head-content">
+                    <h2 id="modalTitle" class="text-2xl text-text-primary">Alterar Senha</h2>
+                    <button name="btncloseModalASenha"  class=" text-text-secondary hover:text-text-primary transition-colors">
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <form id="categoryForm" class="p-6" >
+                <div class="section__modal-form">
+                   
+                     <!-- Admin email -->
+                    <label for="categoryName" id="label-AlterarSenhaEmail" class="label">Email *</label>
+
+                <div id="contentAlterarSenhaEmail" class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24">
+
+                            <path stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M16 12l-4 4-4-4m8-4l-4 4-4-4M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z">
+                            </path>
+
+                        </svg> 
+                    </div>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="AlterarSenhaemail"
+                        class="input pl-10 w-full"
+                        autocomplete="username"
+                        required
+                        aria-required="true"
+                        aria-describedby="username-error"
+                        
+                        placeholder="Digite o teu Email"
+                    >
+                    <button 
+                        type="button" 
+                        id="btnVerifyEmail"
+                        name="btnVerifyEmail"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:text-text-primary transition-colors"
+                        aria-label="Mostrar senha"
+                    >
+                    <svg class="w-5 h-5 text-text-secondary" fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            stroke-width="2" 
+                            d="M9 5l7 7-7 7">
+                        </path>
+
+                    </svg>
+                        
+                    </button>
+                </div>
+                    <label for="" id="err-AlterarSenhaEmail" class="label text-error"></label>
+
+                     <!-- Admin password -->
+                <label for="categoryName" id="label-AlterarSenhaPass" class="label hidden">Password *</label>
+
+                <div id="contentPassword" class="relative hidden">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="AlterarSenhanPass"
+                        class="input pl-10 pr-10 w-full"
+                        placeholder="Digite a Nova senha"
+                        autocomplete="current-password"
+                        required
+                        aria-required="true"
+                        aria-describedby="password-error"
+                        
+                    >
+                    <button 
+                        type="button" 
+                        id="toggleEditPassword"
+                        name="toggleEditPassword"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:text-text-primary transition-colors"
+                        aria-label="Mostrar senha"
+                    >
+                    <svg class="w-5 h-5" fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24">
+
+                        <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <svg id="eyeOffIcon" class=" w-5 h-5 hidden" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.875 18.825A10.05 10.05 0 0112 19
+                            c-4.478 0-8.268-2.943-9.543-7
+                            a9.97 9.97 0 011.563-3.029"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6.223 6.223A9.956 9.956 0 0112 5
+                            c4.478 0 8.268 2.943 9.543 7
+                            a9.97 9.97 0 01-4.143 5.262"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 00-3-3"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3l18 18"></path>
+                        </svg>
+                        
+                    </button>
+                </div>
+                    <label for="" id="err-AdminPass" class="label"></label>
+                    
+                     <!-- Admin passNew -->
+                    
+                <label for="adminPassNew" id="label-AlterarSenhaPassNew" class="label hidden">Nova Password *</label>
+
+                    <div id="contentPassNew" class="relative hidden">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24">
+
+                            <path stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2h-1V9a5 5 0 00-10 0v2H6a2 2 0 00-2 2v6a2 2 0 002 2zm3-10V9a3 3 0 016 0v2H9z">
+                            </path>
+
+                        </svg>
+                    </div>
+                    <input 
+                        type="password" 
+                        id="adminPassNew" 
+                        name="AlterarSenhaPassNew"
+                        class="input pl-10 w-full"
+                        autocomplete="username"
+                        required
+                        aria-required="true"
+                        aria-describedby="username-error"
+                        placeholder="Digite a senha novamente"
+                        
+                    >
+                    <button 
+                        type="button" 
+                        id="toggleEditPassword"
+                        name="toggleEditPassword"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:text-text-primary transition-colors"
+                        aria-label="Mostrar senha"
+                    >
+                    <svg class="w-5 h-5" fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24">
+
+                        <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        <svg id="eyeOffIcon" class=" w-5 h-5 hidden" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.875 18.825A10.05 10.05 0 0112 19
+                            c-4.478 0-8.268-2.943-9.543-7
+                            a9.97 9.97 0 011.563-3.029"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6.223 6.223A9.956 9.956 0 0112 5
+                            c4.478 0 8.268 2.943 9.543 7
+                            a9.97 9.97 0 01-4.143 5.262"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 00-3-3"></path>
+
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3l18 18"></path>
+                        </svg>
+                        
+                    </button>
+                </div>
+                    <label for="" id="err-AdminPassNew" class="label "></label>
+
+                </div>
+
+                <div class="modal__form-btns">
+                    <button type="button" name="btnCancelarModalSenha"  class="btn btn-ghost flex-1">
+                        Cancelar
+                    </button>
+                    <button type="button" name="btnAlterarSenha" class="btn btn-primary flex-1" disabled>
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Alterar 
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </section>
     <footer class="rodape">
         <div class="rodape__text">
             <p>&copy 2025 Biblioteca Williette</p>
@@ -167,6 +393,6 @@
     </footer>
 
     <!--Area de scripts-->
-    <script src="./scripts/loginScripts.js"></script>
+    <script type="module" src="./scripts/loginScripts.js"></script>
 </body>
 </html>

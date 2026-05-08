@@ -16,17 +16,23 @@ export class Api{
 
     async createData(data,rota){
         try{
+            const isFormData = data instanceof FormData;
+            
                 const response = await fetch(`${apiBaseUrl}/${rota}`,
             {
                 method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
+                headers: isFormData? undefined : {
+                    'Content-Type': 'application/json'
                 },
-                body:JSON.stringify(data)
+                body: isFormData ? data : JSON.stringify(data),
+                
             }
         )
+        
+
         if(!response.ok)
             throw new Error('falha ao carregar os dados')
+
         return await response.json()
         }catch(erro){
         console.log(erro.message);
@@ -52,15 +58,18 @@ export class Api{
         
         }
     }
-    async atualizarData(id,rota){
+    async atualizarData(data,rota){
         try{
+            const isFormData = data instanceof FormData;
+
                 const response = await fetch(`${apiBaseUrl}/${rota}`,
             {
                 method:'PUT',
-                headers:{
-                    'Content-Type':'application/json'
+                headers: isFormData? undefined // ⚠️ deixa o browser definir
+                : {
+                    'Content-Type': 'application/json'
                 },
-                body:JSON.stringify(id)
+                body: isFormData ? data : JSON.stringify(data),
             }
         )
         if(!response.ok)

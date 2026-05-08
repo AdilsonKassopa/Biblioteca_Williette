@@ -1,4 +1,5 @@
 const apiBaseUrl = 'http://localhost:3000';
+const urlDoc = 'http://localhost:3000/files'
 
 const booksContainer = document.getElementById('booksContainer');
 const searchInput = document.querySelector('.search__inp');
@@ -49,14 +50,14 @@ async function retornarLivros(livros) {
     const card = document.createElement('div');
     card.className = 'shadow-sm transition-all hover:shadow-md hover:-translate-y-1 book-card group cursor-pointer';
     card.onclick = () => {
-      localStorage.setItem('selectedBook', JSON.stringify(livro));
-      window.location.href = 'book_details.html';
+      localStorage.setItem('idBookHome', livro.id);
+      window.location.href = './adminVisualBook.html';
     };
     let category = categories.find((Element) => Element.id === livro.categoryid)
     card.innerHTML = `
       <div class="aspect-[3/4] bg-surface overflow-hidden">
         <img
-          src="${livro.pathCapa_livro || 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3'}"
+          src="${ urlDoc +'/'+livro.pathCapa_livro || 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3'}"
           alt="Capa do livro ${livro.titulo}"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"

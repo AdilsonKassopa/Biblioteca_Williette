@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor Online - Dom Casmurro - Williete Online Library</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/lerOnline.css">
+  
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fwillieteo4854back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+  </head>
+<body class="bg-background" id="readerBody">
+    <!-- Reader Header -->
+    <header class="reader-header">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Back Button & Menu -->
+            <div class="flex items-center space-x-4">
+                <button 
+                    onclick="window.location.href='book_details.html'" 
+                    class="p-2 text-text-secondary hover:text-primary transition-colors"
+                    aria-label="Voltar aos detalhes do livro"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Book Title -->
+            <div class="flex-1 text-center px-4">
+                <h1 class="font-heading font-semibold text-text-primary text-lg truncate">Dom Casmurro</h1>
+                <p class="text-text-secondary text-sm" id="currentChapterName">Capítulo I - Do título</p>
+            </div>
+
+            <!-- Settings Button -->
+            
+
+                <!-- Settings Dropdown -->
+                <div id="settingsMenu" class=" w-full absolute right-0 top-full mt-2 w-64 bg-surface rounded-lg shadow-xl border border-border p-4">
+                    
+
+                    <!-- Theme -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Tema</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="changeTheme('light')" class="p-3 rounded border-2 border-border hover:border-primary transition-colors bg-white">
+                                <div class="w-full h-8 bg-white border border-gray-300 rounded"></div>
+                                <span class="text-xs mt-1 block">Claro</span>
+                            </button>
+                            <button onclick="changeTheme('sepia')" class="p-3 rounded border-2 border-border hover:border-primary transition-colors bg-[#F4ECD8]">
+                                <div class="w-full h-8 bg-[#F4ECD8] border border-gray-300 rounded"></div>
+                                <span class="text-xs mt-1 block">Sépia</span>
+                            </button>
+                            <button onclick="changeTheme('dark')" class="p-3 rounded border-2 border-border hover:border-primary transition-colors bg-[#1A1A1A]">
+                                <div class="w-full h-8 bg-[#1A1A1A] border border-gray-300 rounded"></div>
+                                <span class="text-xs mt-1 block text-white">Escuro</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </header>
+
+    <!-- Chapter Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleChapterSidebar()"></div>
+    <aside class="chapter-sidebar" id="chapterSidebar">
+        <div class="p-6 border-b border-border">
+            <h2 class="font-heading font-semibold text-xl text-text-primary">Capítulos</h2>
+            <p class="text-text-secondary text-sm mt-1">Dom Casmurro</p>
+        </div>
+        <nav class="py-2">
+            <div class="chapter-item active" onclick="loadChapter(1)">
+                <div class="font-medium text-text-primary">Capítulo I</div>
+                <div class="text-sm text-text-secondary">Do título</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(2)">
+                <div class="font-medium text-text-primary">Capítulo II</div>
+                <div class="text-sm text-text-secondary">Do livro</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(3)">
+                <div class="font-medium text-text-primary">Capítulo III</div>
+                <div class="text-sm text-text-secondary">A denúncia</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(4)">
+                <div class="font-medium text-text-primary">Capítulo IV</div>
+                <div class="text-sm text-text-secondary">Um dever amaríssimo</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(5)">
+                <div class="font-medium text-text-primary">Capítulo V</div>
+                <div class="text-sm text-text-secondary">O agregado</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(6)">
+                <div class="font-medium text-text-primary">Capítulo VI</div>
+                <div class="text-sm text-text-secondary">Tio Cosme</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(7)">
+                <div class="font-medium text-text-primary">Capítulo VII</div>
+                <div class="text-sm text-text-secondary">Dona Glória</div>
+            </div>
+            <div class="chapter-item" onclick="loadChapter(8)">
+                <div class="font-medium text-text-primary">Capítulo VIII</div>
+                <div class="text-sm text-text-secondary">É tempo</div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Touch Zones for Mobile Navigation -->
+    <div class="touch-zone touch-zone-left" onclick="previousPage()" aria-label="Página anterior"></div>
+    <div class="touch-zone touch-zone-right" onclick="nextPage()" aria-label="Próxima página"></div>
+
+    <!-- Reader Content -->
+    <main class="reader-body">
+        <div class="reader-container">
+            <h2 class="chapter-title" id="chapterTitle">Capítulo I - Do título</h2>
+            
+            <div class=" w-full reader-content flex items-center justify-center" id="readerContent">
+               <iframe src="http://localhost:3000/files/documents/1777940482906-223706948.pdf" 
+               frameborder="0"
+               width="100%"
+               height="600px"
+               class="w-full "
+               ></iframe>
+            </div>
+        </div>
+    </main>
+
+ 
+
+    <script>
+        // Reader State Management
+        let currentChapter = 1;
+        const totalChapters = 8;
+        let fontSize = 'md';
+        let theme = 'light';
+
+        // Mock chapter data
+        /*
+       const chapters = {
+            1: {
+                title: "Capítulo I - Do título",
+                name: "Do título",
+                content: `
+                    <p>Uma noite destas, vindo da cidade para o Engenho Novo, encontrei no trem da Central um rapaz aqui do bairro, que eu conheço de vista e de chapéu. Cumprimentou-me, sentou-se ao pé de mim, falou da lua e dos ministros, e acabou recitando-me versos. A viagem era curta, e os versos pode ser que não fossem inteiramente maus. Sucedeu, porém, que como eu estava cansado, fechei os olhos três ou quatro vezes; tanto bastou para que ele interrompesse a leitura e metesse os versos no bolso.</p>
+                    <p>— Continue, disse eu acordando.</p>
+                    <p>— Já acabei, murmurou ele.</p>
+                    <p>— São muito bonitos.</p>
+                    <p>Vi-lhe fazer um gesto para tirá-los outra vez do bolso, mas não passou do gesto; estava amuado. No dia seguinte entrou a dizer de mim nomes feios, e acabou alcunhando-me Dom Casmurro. Os vizinhos, que não gostam dos meus hábitos reclusos e calados, deram curso à alcunha, que afinal pegou. Nem por isso me zanguei. Contei a anedota aos amigos da cidade, e eles, por graça, chamam-me assim, alguns em bilhetes: "Dom Casmurro, domingo vou jantar com você." — "Vou para Petrópolis, Dom Casmurro; a casa é a mesma da Renânia; vê se deixas essa caverna do Engenho Novo, e vai lá passar uns quinze dias comigo." — "Meu caro Dom Casmurro, não cuide que o dispenso do teatro amanhã; venha e dormirá aqui na cidade; dou-lhe camarote, dou-lhe chá, dou-lhe cama; só não lhe dou moça."</p>
+                    <p>Não consultes dicionários. Casmurro não está aqui no sentido que eles lhe dão, mas no que lhe pôs o vulgo de homem calado e metido consigo. Dom veio por ironia, para atribuir-me fumos de fidalgo. Tudo por estar cochilando! Também não achei melhor título para a minha narração; se não tiver outro daqui até ao fim do livro, vai este mesmo. O meu poeta do trem ficará sabendo que não lhe guardo rancor. E com pequeno esforço, sendo o título seu, poderá cuidar que a obra é sua. Há livros que apenas terão isso dos seus autores; alguns nem tanto.</p>
+                    <p>Agora que expliquei o título, passo a escrever o livro. Antes disso, porém, digamos os motivos que me põem a pena na mão.</p>
+                    <p>Vivo só, com um criado. A casa em que moro é própria; fi-la construir de propósito, levado de um desejo tão particular que me vexa imprimi-lo, mas vá lá. Um dia, há bastantes anos, lembrou-me reproduzir no Engenho Novo a casa em que me criei na antiga Rua de Matacavalos, dando-lhe o mesmo aspecto e economia daquela outra, que desapareceu. Construtor e pintor entenderam bem as indicações que lhes fiz: é o mesmo prédio assobradado, três janelas de frente, varanda ao fundo, as mesmas alcovas e salas. Na principal destas, a pintura do teto e das paredes é mais ou menos igual, umas grinaldas de flores miúdas e grandes pássaros que as tomam nos bicos, de espaço a espaço. Nos quatro cantos do teto as figuras das estações, e ao centro das paredes os medalhões de César, Augusto, Nero e Massinissa, com os nomes por baixo... Não alcanço a razão de tais personagens.</p>
+                `
+            },
+            2: {
+                title: "Capítulo II - Do livro",
+                name: "Do livro",
+                content: `
+                    <p>Agora, por que é que nenhuma dessas caprichosas me fez esquecer a primeira amada do meu coração? Talvez porque nenhuma tinha os olhos de ressaca, nem os de cigana oblíqua e dissimulada. Mas não é este propriamente o resto do livro. O resto é saber se a Capitu da Praia da Glória já estava dentro da de Matacavalos, ou se esta foi mudada naquela por efeito de algum caso incidente. Jesus, filho de Sirach, se soubesse dos meus primeiros ciúmes, dir-me-ia, como no seu cap. IX, vers. 1: "Não tenhas ciúmes de tua mulher para que ela não se meta a enganar-te com a malícia que aprender de ti." Mas eu creio que não, e tu concordarás comigo; se te lembras bem da Capitu menina, hás de reconhecer que uma estava dentro da outra, como a fruta dentro da casca.</p>
+                    <p>E bem, qualquer que seja a solução, uma coisa fica, e é a suma das sumas, ou o resto dos restos, a saber, que a minha primeira amiga e o meu maior amigo, tão extremosos ambos e tão queridos também, quis o destino que acabassem juntando-se e enganando-me... A terra lhes seja leve! Vamos à história.</p>
+                `
+            },
+            3: {
+                title: "Capítulo III - A denúncia",
+                name: "A denúncia",
+                content: `
+                    <p>Tinha eu quinze anos; Capitu, catorze. Íamos crescendo, e os nossos brinquedos iam sendo outros. Já não brincávamos de sela, nem de esconder, nem de barras. Eu não digo que não brincássemos; mas os brinquedos eram outros, e outros os modos de brincar. Capitu começava a ser mulher, e eu começava a ser homem. Não sei se me explico bem. Quero dizer que os nossos brinquedos eram mais sérios, e que nós mesmos éramos mais sérios. Não sei se me explico bem.</p>
+                    <p>Um dia, estávamos sentados no quintal, debaixo de uma árvore, conversando. Capitu falava-me de um sonho que tivera na véspera, e eu ouvia-a com atenção. De repente, ela calou-se, e ficou olhando para mim com uns olhos tão fixos, que me fizeram baixar os meus. Quando os tornei a erguer, vi que ela continuava a olhar-me da mesma maneira. Então, não sei por que, senti-me perturbado, e desviei os olhos. Capitu continuou a olhar-me, e eu continuei a desviar os olhos. Finalmente, ela disse-me:</p>
+                    <p>— Você está com medo de mim?</p>
+                    <p>— Eu? Não.</p>
+                    <p>— Então por que desvia os olhos?</p>
+                    <p>Não soube que responder, e ela continuou:</p>
+                    <p>— Você tem medo de mim, sim. Mas não tenha medo; eu não mordo.</p>
+                `
+            }
+        };
+        */
+        // Initialize reader
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedPreferences();
+            loadSavedProgress();
+            updateProgress();
+        });
+
+        // Chapter Navigation
+        function loadChapter(chapterNum) {
+            if (chapterNum < 1 || chapterNum > totalChapters) return;
+
+            currentChapter = chapterNum;
+            const chapter = chapters[chapterNum] || chapters[1];
+
+            // Update content
+            document.getElementById('chapterTitle').textContent = chapter.title;
+            document.getElementById('currentChapterName').textContent = chapter.name;
+            document.getElementById('readerContent').innerHTML = chapter.content;
+
+            // Update UI
+            updateProgress();
+            updateChapterButtons();
+            updateChapterSidebar();
+            
+            // Save progress
+            saveProgress();
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close sidebar on mobile
+            if (window.innerWidth < 769) {
+                toggleChapterSidebar();
+            }
+        }
+
+        function nextChapter() {
+            if (currentChapter < totalChapters) {
+                loadChapter(currentChapter + 1);
+            }
+        }
+
+        function previousChapter() {
+            if (currentChapter > 1) {
+                loadChapter(currentChapter - 1);
+            }
+        }
+
+        function nextPage() {
+            nextChapter();
+        }
+
+        function previousPage() {
+            previousChapter();
+        }
+
+        // Update Progress
+        function updateProgress() {
+            const progress = (currentChapter / totalChapters) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentChapter').textContent = currentChapter;
+            document.getElementById('totalChapters').textContent = totalChapters;
+            document.getElementById('readingProgress').textContent = progress.toFixed(1) + '%';
+        }
+
+        // Update Chapter Buttons
+        function updateChapterButtons() {
+            const prevBtn = document.getElementById('prevChapterBtn');
+            const nextBtn = document.getElementById('nextChapterBtn');
+
+            prevBtn.disabled = currentChapter === 1;
+            nextBtn.disabled = currentChapter === totalChapters;
+
+            if (prevBtn.disabled) {
+                prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+
+            if (nextBtn.disabled) {
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Update Chapter Sidebar
+        function updateChapterSidebar() {
+            const items = document.querySelectorAll('.chapter-item');
+            items.forEach((item, index) => {
+                if (index + 1 === currentChapter) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Toggle Chapter Sidebar
+        function toggleChapterSidebar() {
+            const sidebar = document.getElementById('chapterSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Toggle Settings Menu
+        function toggleSettingsMenu() {
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close settings menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.getElementById('settingsMenu');
+            const settingsButton = event.target.closest('button[onclick="toggleSettingsMenu()"]');
+            
+            if (!settingsButton && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.add('hidden');
+            }
+        });
+
+        // Font Size Control
+        function changeFontSize(size) {
+            fontSize = size;
+            const body = document.getElementById('readerBody');
+            
+            body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+            body.classList.add('font-size-' + size);
+            
+            savePreferences();
+        }
+
+        // Theme Control
+        function changeTheme(newTheme) {
+            theme = newTheme;
+            const body = document.getElementById('readerBody');
+            
+            body.classList.remove('theme-sepia', 'theme-dark');
+            
+            if (newTheme === 'sepia') {
+                body.classList.add('theme-sepia');
+            } else if (newTheme === 'dark') {
+                body.classList.add('theme-dark');
+            }
+            
+            savePreferences();
+        }
+
+        // Bookmark Functionality
+        function addBookmark() {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const bookmark = {
+                book: 'Dom Casmurro',
+                chapter: currentChapter,
+                chapterName: chapters[currentChapter].name,
+                timestamp: new Date().toISOString()
+            };
+            
+            bookmarks.push(bookmark);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            
+            // Show success message (you could implement a toast notification)
+            alert('Marcador adicionado com sucesso!');
+        }
+
+        // Share Reading
+        function shareReading() {
+            const shareData = {
+                title: 'Dom Casmurro - Williete Online Library',
+                text: `Estou lendo "${chapters[currentChapter].name}" de Dom Casmurro`,
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = window.location.href;
+                navigator.clipboard.writeText(url)
+                    .then(() => alert('Link copiado para a área de transferência!'))
+                    .catch(err => console.log('Error copying:', err));
+            }
+        }
+
+        // Save Progress
+        function saveProgress() {
+            const progress = {
+                book: 'Dom Casmurro',
+                chapter: currentChapter,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('readingProgress', JSON.stringify(progress));
+        }
+
+        // Load Saved Progress
+        function loadSavedProgress() {
+            const saved = localStorage.getItem('readingProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                if (progress.book === 'Dom Casmurro') {
+                    currentChapter = progress.chapter;
+                    loadChapter(currentChapter);
+                }
+            }
+        }
+
+        // Save Preferences
+        function savePreferences() {
+            const preferences = {
+                fontSize: fontSize,
+                theme: theme
+            };
+            localStorage.setItem('readerPreferences', JSON.stringify(preferences));
+        }
+
+        // Load Saved Preferences
+        function loadSavedPreferences() {
+            const saved = localStorage.getItem('readerPreferences');
+            if (saved) {
+                const preferences = JSON.parse(saved);
+                changeFontSize(preferences.fontSize);
+                changeTheme(preferences.theme);
+            }
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(event) {
+            // Left arrow - previous chapter
+            if (event.key === 'ArrowLeft') {
+                previousChapter();
+            }
+            // Right arrow - next chapter
+            else if (event.key === 'ArrowRight') {
+                nextChapter();
+            }
+            // Escape - close sidebar/settings
+            else if (event.key === 'Escape') {
+                const sidebar = document.getElementById('chapterSidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                const settingsMenu = document.getElementById('settingsMenu');
+                
+                if (sidebar.classList.contains('active')) {
+                    toggleChapterSidebar();
+                }
+                if (!settingsMenu.classList.contains('hidden')) {
+                    settingsMenu.classList.add('hidden');
+                }
+            }
+            // B - add bookmark
+            else if (event.key === 'b' || event.key === 'B') {
+                addBookmark();
+            }
+        });
+
+        // Touch Gestures for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next chapter
+                    nextChapter();
+                } else {
+                    // Swipe right - previous chapter
+                    previousChapter();
+                }
+            }
+        }
+
+        // Auto-save progress on page unload
+        window.addEventListener('beforeunload', function() {
+            saveProgress();
+            savePreferences();
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

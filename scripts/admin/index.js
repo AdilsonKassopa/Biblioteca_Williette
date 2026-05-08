@@ -15,18 +15,48 @@ const linkAcLivros = document.getElementById('linkAcLivros')
 const linkAcCategorias = document.getElementById('linkAcCategorias')
 const linkAcDefinicoes = document.getElementById('linkAcDefinicoes')
 const dasboardDate = document.getElementById('dasboardDate')
+
+const totalLivros = document.getElementById('totalLivros')
+const totalLivrosRecent = document.getElementById('totalLivrosRecent')
+const totalCategoria = document.getElementById('totalCategoria')
 //elemento html da area de actividades
 
 const actividadesCard = document.getElementById('actividadesCard')
 
+//elementos da area do user
+const profileInfo = document.getElementById('profileInfo')
+const adminName = document.querySelector('input[name = adminName]')
+const adminemail = document.querySelector('input[name = adminemail]')
+const adminPass = document.querySelector('input[name = adminPass]')
+const adminPassNew = document.querySelector('input[name = adminPassNew]')
+const contentPassNew = document.getElementById('contentPassNew')
+const btnCancelarModalAdmin = document.querySelector('button[name = btnCancelarModalAdmin]')
+const btnSalvarAdmin = document.querySelector('button[name = btnSalvarAdmin]')
+const btnEditModalAdmin = document.querySelector('button[name = btnEditModalAdmin]')
+const toggleEditPassword = document.querySelector('button[name = toggleEditPassword]')
+
+
+
+
+
+
+
+const adminModal = document.getElementById('adminModal')
 
 //buscando dados da API
 const api = new Api()
 const livros = await api.getData('Book')
 const categorias = await api.getData('category')
 const actividades =await api.getData('activity')
+let users = await api.getData('users')
 
 const date = new Date()
+
+
+    const token = localStorage.getItem('token')
+    if(!token)
+        window.location.href ='../../loginTela.html'
+
 
 //codigos de navegação na secção do admin
 
@@ -59,11 +89,151 @@ linkAcCategorias.addEventListener('click',function(){
     linkCategoria.classList.remove('hidden')
 })
 
+linkAcDefinicoes.addEventListener('click',()=>{
+    adminModal.classList.remove('hidden')
+    infoUser()
+    preenncherDadosUser()
+    if(!adminName.getAttribute('disabled')){
+        adminName.setAttribute('disabled',true)
+        adminemail.setAttribute('disabled',true)
+    }
+    document.getElementById('label-adminPassNew').classList.add('hidden')
+    contentPassNew.classList.add('hidden')
+    if(!adminPass.getAttribute('disabled')) adminPass.setAttribute('disabled',true)
+})
+
+btnCancelarModalAdmin.addEventListener('click',()=>{
+    adminModal.classList.add('hidden')
+
+    if(!adminName.getAttribute('disabled')){
+        adminName.setAttribute('disabled',true)
+        adminemail.setAttribute('disabled',true)
+    }
+
+    document.getElementById('label-adminPassNew').classList.add('hidden')
+    contentPassNew.classList.add('hidden')
+    if(!adminPass.getAttribute('disabled')) adminPass.setAttribute('disabled',true)
+            
+    document.getElementById('err-AdminPassNew').innerHTML =''
+
+
+})
+btnEditModalAdmin.addEventListener('click',()=>{
+    adminName.removeAttribute('disabled')
+    adminemail.removeAttribute('disabled')
+    adminName.focus()
+    
+    
+})
+toggleEditPassword.addEventListener('click',()=>{
+    document.getElementById('label-adminPassNew').classList.remove('hidden')
+    contentPassNew.classList.remove('hidden')
+    adminPass.removeAttribute('disabled')
+    adminPass.focus()
+
+})
+
+btnSalvarAdmin.addEventListener('click',()=>{
+    
+    if(!adminName.getAttribute('disabled') && !adminPass.getAttribute('disabled') ){
+        if(adminPass.value != adminPassNew.value ){
+            document.getElementById('err-AdminPassNew').innerHTML ='As passes Não são Iguais'
+            return
+        }else{
+            document.getElementById('err-AdminPassNew').innerHTML =''
+        }
+    const DataToken = obterDadosDoToken(token)
+
+        const data = api.atualizarData({id:DataToken.id,
+            userName:adminName.value,
+            email:adminemail.value
+        },'users/update')
+        
+        const dataPass = api.atualizarData({id:DataToken.id,
+            password:adminPassNew.value
+        },'users/updatePassword')
+
+        if(data) users = api.getData('users')
+
+    }else if(!adminName.getAttribute('disabled') && adminPass.getAttribute('disabled')){
+        const DataToken = obterDadosDoToken(token)
+
+        const data = api.atualizarData({id:DataToken.id,
+            userName:adminName.value,
+            email:adminemail.value
+        },'users/update')
+
+        if(data) users = api.getData('users')
+        
+        console.log(data);
+        
+    }
+    else if(adminName.getAttribute('disabled') && !adminPass.getAttribute('disabled')){
+        if(adminPass.value != adminPassNew.value ){
+            document.getElementById('err-AdminPassNew').innerHTML ='As passes Não são Iguais'
+            return
+        }else{
+            document.getElementById('err-AdminPassNew').innerHTML =''
+        }
+        
+        const DataToken = obterDadosDoToken(token)
+
+        const dataPass = api.atualizarData({id:DataToken.id,
+            password:adminPassNew.value
+        },'users/updatePassword')
+
+        console.log(dataPass);
+        
+        
+    }
+
+
+
+
+
+    if(!adminName.getAttribute('disabled')){
+        adminName.setAttribute('disabled',true)
+        adminemail.setAttribute('disabled',true)
+    }
+
+    document.getElementById('label-adminPassNew').classList.add('hidden')
+    contentPassNew.classList.add('hidden')
+    if(!adminPass.getAttribute('disabled')) adminPass.setAttribute('disabled',true)
+    adminModal.classList.add('hidden')
+})
+
+const dadosToken = obterDadosDoToken(token)
+
+
+
+
+
+
+
+
 btnSair.addEventListener('click',()=>{
+    localStorage.setItem('token','')
     setTimeout(()=> window.location.replace('../home.html'),500)
 
 })
 
+totalLivros.innerHTML=`${livros.length}` //buscar o total de livros
+
+totalLivrosRecent.innerHTML =`<p>+${
+    (livros.filter(item => {
+        const datebd = new Date(item.createdAt)
+        return datebd.toLocaleString('pt-BR',{month:'long'}) === date.toLocaleString('pt-BR',{month:'long'})
+    })).length
+} novos neste mês</p>` //buscar total de livros adicionados recentemente
+
+totalCategoria.inert =`${categorias.length}`
+
+document.getElementById('totalCategoriaRecent').innerHTML =`<p>+${
+    (categorias.filter(item => {
+        const datebd = new Date(item.createdAt)
+        return datebd.toLocaleString('pt-BR',{month:'long'}) === date.toLocaleString('pt-BR',{month:'long'})
+    })).length
+} adicionadas recentemente</p>`
 
 dasboardDate.innerHTML = `${date.toLocaleString('pt-BR', {
     day: 'numeric',
@@ -165,3 +335,52 @@ function menuVaegar(elementMenu){
     }
 }
 
+function obterDadosDoToken(token){
+    try{
+        const base64url = token.split('.')[1]
+
+    //converter a base para string
+    const base64 = base64url.replace(/-/g,'+').replace(/_/g,'/')
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(c=>{
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+
+    //transformar em objecto JSON
+    return JSON.parse(jsonPayload)
+    }catch(err){
+        console.error("token Invalido",err);
+        return null
+        
+    }
+}
+
+function preenncherDadosUser(){
+    const DataToken = obterDadosDoToken(token)
+    adminName.value = users.find(item => item.id === DataToken.id).userName
+    adminemail.value = users.find(item => item.id === DataToken.id).email
+    // adminPass = 
+    // adminPassNew = 
+    
+
+}
+
+async function infoUser(){
+    users = await api.getData('users')
+    //informações do user
+profileInfo.innerHTML=` <h1>${(users.find(item => item.id === dadosToken.id)).userName}</h1>
+                    <p class="profile-role">Administrador</p>
+                    <p class="profile-email">
+                        <svg class="w-5 h-5 text-text-secondary info-icon" fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24">
+
+                            <path stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M16 12l-4 4-4-4m8-4l-4 4-4-4M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z">
+                            </path>
+
+                        </svg> 
+                          ${(users.find(item => item.id === dadosToken.id)).email}
+                    </p>`
+}

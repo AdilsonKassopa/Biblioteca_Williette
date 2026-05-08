@@ -2,7 +2,7 @@ import { Api } from "../apiFunction.js"
 
 //elementos do html [Botões]
 const addNovoLivro = document.querySelector('button[name = addNovoLivro]') //botão para abrir o modal add livros
-
+const selectedCount = document.getElementById('selectedCount')
 
 /**
  * elementos da secção de busca 
@@ -95,9 +95,8 @@ const api = new Api()
 let categoria = await api.getData('category')
 let livros = await api.getData('book')
 let status = await api.getData('status')
-const autores = await api.getData('autor')
-
-const formData = new FormData();
+let autores = await api.getData('autor')
+const urlDoc = 'http://localhost:3000/files'
 
 
 /**
@@ -162,6 +161,8 @@ searchBook.addEventListener('input',()=>{
     emptyStateBook.classList.add('hidden')
 
     const vet = filtrarLivros(searchBook.value)
+    
+    
     if(vet.length > 0)
         showBook(vet)
     else
@@ -219,7 +220,7 @@ preencherCategory(bookCategory)
 
 bookAutor.addEventListener('blur',()=>{
     
-    const autor = autores.find(item => item.name === bookAutor.value)
+    const autor = autores.find(item => item.name === bookAutor.value.trim())
     if(autor){
         bookAutor.value = autor.name
         containerAboutAutor.classList.add('hidden')
@@ -233,21 +234,112 @@ bookAutor.addEventListener('blur',()=>{
     
     
 })
+
+
 //salvar os dados do livro
-addBook.addEventListener('click',()=>{
-    const data = retornarDadosDoLivro()
-    
-    if(addBook.getAttribute('data-id')){
-        data.book.id = addBook.getAttribute('data-id')
-        api.atualizarData(data.book,'book/update')
-    }else{
-        api.createData(data.book,'book/create')
+addBook.addEventListener('click',async ()=>{
+    // Criar novos FormData para evitar acumulação de dados de chamadas anteriores
+    let formData = new FormData();
+    let autorData = new FormData();
+
+    //Dados do autor
+    if(!(autores.find(item => item.name === bookAutor.value))?.id){
+        if (bookAutor.value) autorData.append('name', bookAutor.value);
+        if (bookAboutAutor.value) autorData.append('descricao', bookAboutAutor.value);
+        if (BookAutorFile.files[0]) autorData.append('pathImg', BookAutorFile.files[0]);
+
+        const autorSalvo = await api.createData(autorData,'autor/create')
+        console.log('formDataAutor: ',autorData);
+        
+        console.log('dados do autor:',autorSalvo);
+        
+        // Atualizar a lista de autores após criar um novo
+        autores = await api.getData('autor');
     }
 
+    // Passar formData para setDadosDoLivro
+    await setDadosDoLivro(formData);
+
+    if(addBook.getAttribute('data-id')){
+        formData.append('id', addBook.getAttribute('data-id'))
+        const bookUpdate = await api.atualizarData(formData,'book/update')
+        
+        if(bookUpdate){
+            const activity ={
+                activity:'Livro atualizado',
+                descricao:`Informações de "${formData.get('titulo')}" foram Atualizadas`,
+                pathImg:`img/${formData.get('titulo')}`
+            }
+            const dataActivity = await api.createData(activity,'activity/create')
+        }
+    }else{
+
+        const bookSalvo = await api.createData(formData,'book/create')
+        console.log('formData', formData);
+        
+        console.log('dados Salvo',bookSalvo);
+        
+        if(bookSalvo){
+            const activity ={
+                activity:'Novo livro adicionado',
+                descricao:`Informações do "${formData.get('titulo')}" foi adicionada ao sistema`,
+                pathImg:`img/${formData.get('titulo')}`
+            }
+            const dataActivity = await api.createData(activity,'activity/create')
+        }
+
+    }
+
+
     bookModal.classList.add('hidden')
-    livros = api.getData('book')
+    livros = await api.getData('book')
     showBook(livros)
 })
+
+//elementos do modal confirmar delete do livro
+modal_footer_canc.addEventListener('click',()=>{
+    modal_footer_del.setAttribute('data-id','')
+    deleteModalBook.classList.add('hidden')
+})
+
+modal_footer_del.addEventListener('click',()=>{
+    const id = modal_footer_del.getAttribute('data-id')
+    console.log('pegeuei o id:',id)
+    deletarLivro(id)
+    modal_footer_del.setAttribute('data-id','')
+    deleteModalBook.classList.add('hidden')
+})
+
+
+
+
+async function salvarlivro(formData, id) {
+    try {
+      const url = id
+        ? `http://localhost:3000/api/private/servicos/${id}`
+        : `http://localhost:3000/book/create`;
+  
+      const method = id ? "PUT" : "POST";
+  
+      const res = await fetch(url, {
+        method,
+        body: formData, // ✅ multipart/form-data
+      });
+  
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        // servicoErro.textContent = data?.erro || "Erro ao salvar serviço";
+        // servicoErro.classList.remove("hidden");
+        return;
+      }
+      return await res.json()
+    } catch (err) {
+      console.error(err);
+    //   servicoErro.textContent = "Erro ao comunicar com o servidor";
+    //   servicoErro.classList.remove("hidden");
+    }
+}
+
 
 //executar uma acção em massa
 
@@ -259,9 +351,11 @@ accoesEmMassa.addEventListener('click',()=>{
 
 accoesEmMassa.addEventListener('change',()=>{
     const checkBoxes = document.querySelectorAll('.selectItemLivros:checked')
-    if(accoesEmMassa.value === 'deletar'){
+    if(accoesEmMassa.value === 'Deletar'){
         checkBoxes.forEach(checkBox => {
             const id = checkBox.getAttribute('data-id')
+            console.log('id no check',id);
+            
             deletarLivro(id)
         })
 
@@ -274,7 +368,9 @@ accoesEmMassa.addEventListener('change',()=>{
         })
     }
         accoesEmMassa.setAttribute('disabled','true')
-
+    accoesEmMassa.value ='all'
+    count = 0
+    document.getElementById('selectedCount').innerHTML=`${count} Selecionados`
 })
     
 
@@ -334,7 +430,7 @@ function showBook(item){
                                 <td>
                                     <div class="table__linha--capa">
                                         <img 
-                                            src="${element.pathCapa_livro || './assets/vanguarda_saga.jpeg'}" 
+                                            src="${urlDoc+'/'+element.pathCapa_livro || './assets/vanguarda_saga.jpeg'}" 
                                             alt="Capa do livro ${element.titulo}"
                                             class=""
                                             loading="lazy"
@@ -361,7 +457,7 @@ function showBook(item){
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                             </svg>
                                         </button>
-                                        <button onclick="deleteBook('${element.id}')" class=" text-text-secondary hover:text-error transition-colors" title="Excluir">
+                                        <button onclick="opendeleteModal('${element.id}')" class=" text-text-secondary hover:text-error transition-colors" title="Excluir">
                                             <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                             </svg>
@@ -402,12 +498,11 @@ async function editBook(id){
     const statusName = (status.find(item => item.id === idStatus)).status
     
     bookTitulo.value = book.titulo
-    capaBookFile.file = book.pathCapa_livro
-    bookAutor.value = book.Autor
+    bookAutor.value = (autores.find(item => item.id === book.autorId )).name
     bookISBN.value = book.ISBN
     bookYear.value = book.ano_pub
     bookSynopsis.value = book.sinopse
-    bookFile.file = book.path_book
+
     
     
     
@@ -448,7 +543,7 @@ function filtrarLivros(valor){
             const category = categoria.find(item => item.name === valor.value)
             return element.categoryid === category.id
         }else{
-            return element.titulo.toLowerCase().includes(valor.toLowerCase()) || element.Autor.toLowerCase().includes(valor.toLowerCase())
+            return element.titulo.toLowerCase().includes(valor.toLowerCase()) || (autores.find(item => item.id === element.autorId)).name.toLowerCase().includes(valor.toLowerCase())
         }
         
     })
@@ -468,41 +563,33 @@ if(categoria.length != 0){
 }
 }
 
-//função para retornar os dados do livro para serem salvos
-function retornarDadosDoLivro(){
-
-    const fd = new FormData();
+//função para preencher o formData com os dados do livro e autor
+async function setDadosDoLivro(formData){
+    //autores = await api.getData('autor')
     // 1. Adicionar os arquivos com nomes de campos específicos
-    if (bookFile.files[0]) fd.append('livro_pdf', bookFile.files[0]);
-    if (capaBookFile.files[0]) fd.append('capa_livro', capaBookFile.files[0]);
-    if (BookAutorFile.files[0]) fd.append('foto_autor', BookAutorFile.files[0]);
-    return {
-        book:{
-            titulo:bookTitle.value,
-            ISBN:bookISBN.value,
-            Idioma:bookIdioma.value,
-            Pais:bookPais.value,
-            Paginas:bookPage.value,
-            volume: bookVolume.value,
-            ano_pub:bookYear.value,
-            sinopse:bookSynopsis.value,
-            path_book:fd.get('livro_pdf'), //bookFile.files[0],
-            pathCapa_livro:fd.get('capa_livro'), //capaBookFile.files[0],
-            statusId:(status.find(item =>{
+    if (bookFile.files[0]) formData.append('path_book', bookFile.files[0]);
+    if (capaBookFile.files[0]) formData.append('pathCapa_livro', capaBookFile.files[0]);
+    if (bookTitulo.value) formData.append('titulo', bookTitulo.value);
+    if (bookISBN.value) formData.append('ISBN', bookISBN.value);
+    if (bookIdioma.value) formData.append('Idioma', bookIdioma.value);
+    if (bookPais.value) formData.append('Pais', bookPais.value);
+    if (bookPage.value) formData.append('Paginas', bookPage.value);
+    if (bookVolume.value) formData.append('volume', bookVolume.value);
+    if (bookYear.value) formData.append('ano_pub', bookYear.value);
+    if (bookSynopsis.value) formData.append('sinopse', bookSynopsis.value);
+    if (bookAutor.value) formData.append('autorId', (autores.find(item => item.name === bookAutor.value)).id);
+    if (bookCategory.value) formData.append('categoryid', (categoria.find(item => item.name === bookCategory.value)).id);
+
+    if (bookStatusActive.checked || bookStatusInactive.checked) 
+        formData.append('statusId', (status.find(item =>{
                 if(bookStatusActive.checked)
                     return item.status === bookStatusActive.value
                 else if(bookStatusInactive.checked)
                     return item.status === bookStatusInactive.value
-            })).id,
-            autorId:(autores.find(item => item.name === bookAutor.value)).id,
-            categoryid:(categoria.find(item => item.name === bookCategory.value)).id
-        },
-        autor:{
-            name:bookAutor.value,
-            descricao:bookAboutAutor.value,
-            pathImag:fd.get('foto_autor') //BookAutorFile.files[0]
-        }
-    }
+            })).id);
+
+    
+    
 }
 
 
@@ -519,11 +606,11 @@ function selectCheck(element){
     }
 
     if(count != 0){
-        document.getElementById('resultadoFiltro').innerHTML=`
-        Mostrando <span id="resultsCount" class="font-medium text-text-primary">${count}</span> de <span id="searcTotalBook" class="font-medium text-text-primary">${(livros.filter(item => item)).length}</span> livros
+        document.getElementById('selectedCount').innerHTML=`
+        ${count} Selecionados
         `
     }else{
-        document.getElementById('resultadoFiltro').innerHTML=''
+        document.getElementById('selectedCount').innerHTML=`${count} Selecionados`
     }
 }
 
@@ -536,18 +623,31 @@ async function deletarLivro(id){
     if(livroDeletado){
             const activity ={
                 activity:'Livro eliminado',
-                descricao:`Informações do "${data.name}" foram Eliminadas`,
-                pathImg:`img/${data.name}`
+                descricao:`Informações do "${data.titulo}" foram Eliminadas`,
+                pathImg:`img/${data.titulo}`
             }
     
     const dataActivity = await api.createData(activity,'activity/create')
     
+    }else{
+        return
     }
 
 
     livros = await api.getData('book')
-    showBook(categoria)
+    showBook(livros)
+}
+
+function opendeleteModal(id){
+    modal_footer_del.setAttribute('data-id',id)
+    deleteModalBook.classList.remove('hidden')
+}
+function viewBook(id){
+    localStorage.setItem('idBook', id)
+    window.location.href='../../adminVisualBook.html'
 }
 
 window.selectCheck = selectCheck
 window.editBook = editBook
+window.opendeleteModal = opendeleteModal
+window.viewBook = viewBook

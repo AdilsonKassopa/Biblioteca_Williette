@@ -1,3 +1,5 @@
+import { Api } from "./apiFunction.js";
+
 //declaração dos elementos html
 const input_email = document.querySelector('input[name = email]')
 const input_senha = document.querySelector('input[name = password]')
@@ -11,11 +13,29 @@ const alertMessage = document.getElementById('alertMessage')
 const alertText = document.getElementById('alertText')
 const alertIcon = document.getElementById('alertIcon')
 
+//elementos do modal
+const linkalterarSenha = document.getElementById('linkalterarSenha')
+const logiAlterSenhaModal = document.getElementById('logiAlterSenhaModal')
+
+
+const btncloseModalASenha = document.querySelector('button[name = btncloseModalASenha]')
+const btnVerifyEmail = document.querySelector('button[name = btnVerifyEmail]')
+const btnCancelarModalSenha = document.querySelector('button[name = btnCancelarModalSenha]')
+const btnAlterarSenha = document.querySelector('button[name = btnAlterarSenha]')
+
+
+const AlterarSenhaemail = document.querySelector('input[name = AlterarSenhaemail]')
+const AlterarSenhanPass = document.querySelector('input[name = AlterarSenhanPass]')
+const AlterarSenhaPassNew = document.querySelector('input[name = AlterarSenhaPassNew]')
+
+
 const url ='http://localhost:3000/users/login'
 
+const api = new Api
+const users = await api.getData('users')
 
 
-console.log(elementInput);
+
 
 //evento acionado enquanto o campo é preenchido
 input_email.addEventListener('input',()=>{
@@ -68,6 +88,7 @@ btn_entrar.addEventListener('click', async ()=>{
         throw new Error(user.erro || 'Credenciais inválidas')
     }
     // Show success message
+    localStorage.setItem('token',user)
     showAlert('Login realizado com sucesso! Redirecionando...', 'success');
     setTimeout(()=> window.location.replace('../admin.html'),1500)
 
@@ -102,4 +123,148 @@ function cleanElementText(elementName){
     Element.textContent =''
 
 }
+
+
+
+
+
+
+
+
+//FUNÇÕES DOS ELEMENTOS DO MODAL ALTERAR SENHA
+
+//ABRIR O MODAL
+linkalterarSenha.addEventListener('click',()=>{
+    setTimeout(()=> logiAlterSenhaModal.classList.remove('hidden'),1000)
+
+    document.getElementById('err-AlterarSenhaEmail').innerHTML =''
+    
+    
+    document.getElementById('contentAlterarSenhaEmail').classList.remove('hidden')
+    document.getElementById('label-AlterarSenhaEmail').classList.remove('hidden')
+
+    document.getElementById('label-AlterarSenhaPass').classList.add('hidden')
+    document.getElementById('contentPassword').classList.add('hidden')
+    document.getElementById('label-AlterarSenhaPassNew').classList.add('hidden')
+    document.getElementById('contentPassNew').classList.add('hidden')
+    
+})
+
+//BOTÃO PARA FECHAR O MODAL
+btncloseModalASenha.addEventListener('click',()=>{
+    
+    logiAlterSenhaModal.classList.add('hidden')
+
+    document.getElementById('contentAlterarSenhaEmail').classList.remove('hidden')
+    document.getElementById('label-AlterarSenhaEmail').classList.remove('hidden')
+
+
+
+    document.getElementById('label-AlterarSenhaPass').classList.add('hidden')
+    document.getElementById('contentPassword').classList.add('hidden')
+    document.getElementById('label-AlterarSenhaPassNew').classList.add('hidden')
+    document.getElementById('contentPassNew').classList.add('hidden')
+
+})
+
+//BOTÃO PARA FECHAR O MODAL
+
+btnCancelarModalSenha.addEventListener('click',()=>{
+    
+    logiAlterSenhaModal.classList.add('hidden')
+
+    document.getElementById('contentAlterarSenhaEmail').classList.remove('hidden')
+    document.getElementById('label-AlterarSenhaEmail').classList.remove('hidden')
+
+
+
+    document.getElementById('label-AlterarSenhaPass').classList.add('hidden')
+    document.getElementById('contentPassword').classList.add('hidden')
+    document.getElementById('label-AlterarSenhaPassNew').classList.add('hidden')
+    document.getElementById('contentPassNew').classList.add('hidden')
+
+})
+
+//VERIFICAR SE EXISTE UMA CONTA COM O EMAIL
+btnVerifyEmail.addEventListener('click',()=>{
+    if(AlterarSenhaemail.value){
+        const verify = users.find(item => item.email.trim() === AlterarSenhaemail.value.trim() )
+        
+        console.log(users);
+        
+
+        if(!verify){
+        document.getElementById('err-AlterarSenhaEmail').innerHTML ='Nenhum usuario associado a este email'
+        document.getElementById('err-AlterarSenhaEmail').classList.add('text-error')
+
+        return
+        }
+        document.getElementById('err-AlterarSenhaEmail').innerHTML =''
+        btnAlterarSenha.removeAttribute('disabled')
+
+        setTimeout(()=> {
+            document.getElementById('contentAlterarSenhaEmail').classList.add('hidden')
+            document.getElementById('label-AlterarSenhaEmail').classList.add('hidden')
+
+
+
+            document.getElementById('label-AlterarSenhaPass').classList.remove('hidden')
+            document.getElementById('contentPassword').classList.remove('hidden')
+            document.getElementById('label-AlterarSenhaPassNew').classList.remove('hidden')
+            document.getElementById('contentPassNew').classList.remove('hidden')
+        },1000)
+        
+        
+
+
+
+    }
+})
+
+
+
+btnAlterarSenha.addEventListener('click',()=>{
+    
+        if(AlterarSenhanPass.value != AlterarSenhaPassNew.value ){
+            document.getElementById('err-AdminPassNew').innerHTML ='As passes Não são Iguais'
+            document.getElementById('err-AdminPassNew').classList.add('text-error')
+
+            return
+        }else{
+            document.getElementById('err-AdminPassNew').innerHTML =''
+            document.getElementById('err-AdminPassNew').classList.remove('text-error')
+
+        }
+
+        if(!AlterarSenhaemail.value) return
+        
+        const user = users.find(item => item.email.trim() === AlterarSenhaemail.value.trim() )
+
+        const dataPass = api.atualizarData({id:user.id,
+            password:AlterarSenhaPassNew.value
+        },'users/updatePassword')
+
+        
+
+
+        logiAlterSenhaModal.classList.add('hidden')
+
+        document.getElementById('contentAlterarSenhaEmail').classList.remove('hidden')
+        document.getElementById('label-AlterarSenhaEmail').classList.remove('hidden')
+
+
+
+        document.getElementById('label-AlterarSenhaPass').classList.add('hidden')
+        document.getElementById('contentPassword').classList.add('hidden')
+        document.getElementById('label-AlterarSenhaPassNew').classList.add('hidden')
+        document.getElementById('contentPassNew').classList.add('hidden')
+
+    
+})
+
+
+
+
+
+
 
